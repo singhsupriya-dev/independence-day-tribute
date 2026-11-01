@@ -1,0 +1,398 @@
+/* ==========================================================================
+   UNSUNG WARRIORS OF SWARAJ - DESIGN SYSTEM & HERITAGE STYLING
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Heritage Palette */
+  --bg-main: #0B0C10;
+  --bg-surface: #12141A;
+  --bg-surface-elevated: #181B22;
+  --bg-parchment: #F6EFE9;
+  --bg-parchment-dark: #221F1C;
+  --bg-parchment-translucent: rgba(246, 239, 233, 0.04);
+  
+  /* Ink & Text */
+  --ink-primary: #F5EFEB;
+  --ink-secondary: #C8BFB6;
+  --ink-muted: #8E867E;
+  --ink-dark: #12141A;
+  --ink-parchment-sub: #4A4036;
+
+  /* Sovereign Accents */
+  --saffron-muted: #D97724;
+  --saffron-deep: #C05621;
+  --saffron-glow: rgba(217, 119, 36, 0.35);
+  --saffron-light: #FBD38D;
+  
+  --green-heritage: #1B4332;
+  --green-forest: #2D6A4F;
+  --green-emerald: #40916C;
+  --green-glow: rgba(45, 106, 79, 0.35);
+
+  --gold-antique: #C5A059;
+  --gold-bright: #E2B86E;
+  --gold-deep: #8C6D37;
+  --gold-glow: rgba(197, 160, 89, 0.4);
+
+  --border-parchment: rgba(245, 239, 235, 0.1);
+  --border-gold: rgba(197, 160, 89, 0.25);
+  --border-saffron: rgba(217, 119, 36, 0.3);
+
+  /* Typography */
+  --font-heading: 'Cinzel', Georgia, serif;
+  --font-heading-ornate: 'Cinzel Decorative', Georgia, serif;
+  --font-prose: 'Cormorant Garamond', Garamond, serif;
+  --font-ui: 'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif;
+
+  /* Elevations & Shadows */
+  --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --shadow-archival: 0 10px 30px -5px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(197, 160, 89, 0.15);
+  --shadow-gold-glow: 0 0 25px rgba(197, 160, 89, 0.25);
+  --shadow-saffron-glow: 0 0 30px rgba(217, 119, 36, 0.25);
+}
+
+/* Base Reset & Typography */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--bg-main);
+  color: var(--ink-primary);
+  font-family: var(--font-ui);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: var(--bg-main);
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(217, 119, 36, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at 10% 40%, rgba(45, 106, 79, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 90% 70%, rgba(197, 160, 89, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 50% 100%, rgba(27, 67, 50, 0.08) 0%, transparent 60%);
+  background-attachment: fixed;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B0C10;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2A2D37;
+  border-radius: 4px;
+  border: 1px solid var(--border-gold);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-antique);
+}
+
+/* Text Selection */
+::selection {
+  background: rgba(217, 119, 36, 0.4);
+  color: #FFF;
+}
+
+/* Typography Utilities */
+.font-cinzel {
+  font-family: var(--font-heading);
+}
+
+.font-cinzel-ornate {
+  font-family: var(--font-heading-ornate);
+}
+
+.font-cormorant {
+  font-family: var(--font-prose);
+}
+
+.font-sans {
+  font-family: var(--font-ui);
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #FFF6E5 0%, #E2B86E 40%, #C5A059 70%, #8C6D37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.saffron-gradient-text {
+  background: linear-gradient(135deg, #FFF0E6 0%, #F6AD55 35%, #D97724 75%, #C05621 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tricolour-accent-bar {
+  height: 3px;
+  background: linear-gradient(90deg, #D97724 0%, #F5EFEB 50%, #2D6A4F 100%);
+  border-radius: 2px;
+}
+
+.archival-border {
+  border: 1px solid var(--border-gold);
+  position: relative;
+}
+
+.archival-border::before {
+  content: '';
+  position: absolute;
+  top: 3px; left: 3px; right: 3px; bottom: 3px;
+  border: 1px dashed rgba(197, 160, 89, 0.2);
+  pointer-events: none;
+}
+
+/* Archival Paper Texture Effect */
+.parchment-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-parchment);
+  border-radius: 8px;
+  position: relative;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: var(--shadow-subtle);
+}
+
+.parchment-card:hover {
+  border-color: var(--gold-antique);
+  box-shadow: var(--shadow-archival), var(--shadow-gold-glow);
+  transform: translateY(-4px);
+}
+
+/* Postage Stamp Serrated Edge */
+.stamp-edge {
+  position: relative;
+  background: #151720;
+  border: 2px solid #333845;
+  box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+}
+
+.stamp-edge::after {
+  content: '';
+  position: absolute;
+  top: -4px; left: -4px; right: -4px; bottom: -4px;
+  border: 2px dashed var(--gold-antique);
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+/* Wax Seal Badge */
+.wax-seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #C05621, #7B241C);
+  border: 2px solid #E2B86E;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.6), inset 0 2px 4px rgba(255,255,255,0.3);
+  color: #FFF;
+  font-family: var(--font-heading);
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+/* Animated Keyframes */
+@keyframes chakraRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(1.5deg);
+  }
+}
+
+@keyframes pulseGold {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(197, 160, 89, 0.2);
+    border-color: rgba(197, 160, 89, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(197, 160, 89, 0.6);
+    border-color: rgba(197, 160, 89, 0.7);
+  }
+}
+
+@keyframes radarPulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+}
+
+@keyframes stampDrop {
+  0% {
+    opacity: 0;
+    transform: scale(2.2) rotate(-15deg);
+  }
+  70% {
+    opacity: 0.95;
+    transform: scale(0.95) rotate(-4deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(-5deg);
+  }
+}
+
+.animate-chakra-slow {
+  animation: chakraRotate 90s linear infinite;
+}
+
+.animate-float {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.animate-float-alt {
+  animation: floatSlow 7.5s ease-in-out infinite reverse;
+}
+
+.animate-pulse-gold {
+  animation: pulseGold 3s infinite ease-in-out;
+}
+
+.animate-stamp {
+  animation: stampDrop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Section Containers */
+.heritage-container {
+  max-width: 1320px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.9rem;
+  background: rgba(197, 160, 89, 0.08);
+  border: 1px solid var(--border-gold);
+  border-radius: 9999px;
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--gold-bright);
+}
+
+.section-tag svg {
+  color: var(--saffron-muted);
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ink-primary);
+  line-height: 1.15;
+}
+
+.section-subtitle {
+  font-family: var(--font-prose);
+  font-size: 1.35rem;
+  color: var(--ink-secondary);
+  line-height: 1.6;
+}
+
+/* Button Component Tokens */
+.btn-swaraj-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.9rem 1.85rem;
+  background: linear-gradient(135deg, #D97724 0%, #B84E1A 100%);
+  color: #FFF;
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(217, 119, 36, 0.35);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+
+.btn-swaraj-primary:hover {
+  background: linear-gradient(135deg, #E6852F 0%, #C85922 100%);
+  box-shadow: 0 6px 25px rgba(217, 119, 36, 0.55);
+  transform: translateY(-2px);
+}
+
+.btn-swaraj-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.9rem 1.85rem;
+  background: rgba(18, 20, 26, 0.8);
+  color: var(--gold-bright);
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid var(--border-gold);
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+}
+
+.btn-swaraj-secondary:hover {
+  background: rgba(197, 160, 89, 0.15);
+  border-color: var(--gold-bright);
+  color: #FFF;
+  transform: translateY(-2px);
+}
+
+/* Reduced Motion Mode Support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unsung Warriors of Swaraj — India's Forgotten Freedom Fighters</title>
+  <meta name="description" content="A living digital archive for India's forgotten freedom fighters. Discover 200+ years of unsung sacrifice for Swaraj.">
+  <meta name="theme-color" content="#0B0C10">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            cinzel: ['Cinzel', 'Georgia', 'serif'],
+            cormorant: ['Cormorant Garamond', 'Georgia', 'serif'],
+            outfit: ['Outfit', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --saffron: #D97724;
+      --gold: #C5A059;
+      --gold-light: #E2B86E;
+      --green: #2D6A4F;
+      --charcoal: #0B0C10;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: #0B0C10; color: #F5EFEB; font-family: 'Outfit', sans-serif; overflow-x: hidden; }
+
+    ::selection { background: rgba(217,119,36,0.4); color: #fff; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0B0C10; }
+    ::-webkit-scrollbar-thumb { background: #C5A059; border-radius: 3px; }
+
+    /* ---- Gold gradient text ---- */
+    .gold-text {
+      background: linear-gradient(135deg, #FFF6E5 0%, #E2B86E 40%, #C5A059 70%, #8C6D37 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .saffron-text {
+      background: linear-gradient(135deg, #FFF0E6 0%, #F6AD55 35%, #D97724 75%, #C05621 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+
+    /* ---- Chakra rotation ---- */
+    @keyframes chakra { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    .chakra-spin { animation: chakra 80s linear infinite; }
+
+    /* ---- Floating fragments ---- */
+    @keyframes floatA { 0%,100%{ transform:translateY(0) rotate(0deg);} 50%{transform:translateY(-16px) rotate(2deg);} }
+    @keyframes floatB { 0%,100%{ transform:translateY(0) rotate(0deg);} 50%{transform:translateY(-10px) rotate(-1.5deg);} }
+    .float-a { animation: floatA 7s ease-in-out infinite; }
+    .float-b { animation: floatB 9s ease-in-out infinite; }
+
+    /* ---- Pulse glow ---- */
+    @keyframes pulseGlow { 0%,100%{box-shadow:0 0 15px rgba(197,160,89,.2);} 50%{box-shadow:0 0 40px rgba(197,160,89,.6);} }
+    .pulse-gold { animation: pulseGlow 3s ease-in-out infinite; }
+
+    /* ---- Fade in on scroll ---- */
+    @keyframes fadeInUp { from{opacity:0;transform:translateY(30px);} to{opacity:1;transform:translateY(0);} }
+    .fade-in { opacity: 0; animation: fadeInUp .7s ease forwards; }
+    .delay-1 { animation-delay: .15s; }
+    .delay-2 { animation-delay: .3s; }
+    .delay-3 { animation-delay: .45s; }
+
+    /* ---- Reveal on scroll via IntersectionObserver ---- */
+    .reveal { opacity:0; transform:translateY(40px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+
+    /* ---- Tricolour bar ---- */
+    .tricolour { height:3px; background:linear-gradient(90deg,#D97724 33%,#F5EFEB 33%,#F5EFEB 66%,#2D6A4F 66%); border-radius:2px; }
+
+    /* ---- Cards ---- */
+    .warrior-card {
+      background: #13151D;
+      border: 1px solid rgba(197,160,89,.15);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: all .35s cubic-bezier(.16,1,.3,1);
+      cursor: pointer;
+    }
+    .warrior-card:hover {
+      transform: translateY(-6px);
+      border-color: #C5A059;
+      box-shadow: 0 16px 40px rgba(0,0,0,.8), 0 0 25px rgba(197,160,89,.25);
+    }
+    .warrior-card:hover .card-top-bar { opacity: 1; }
+    .card-top-bar { position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#D97724,#C5A059,#2D6A4F);opacity:0;transition:opacity .3s; }
+
+    /* ---- Warrior portrait images ---- */
+    .portrait-img {
+      width:100%; height:240px;
+      object-fit:cover; object-position:top;
+      filter:sepia(20%) contrast(1.05);
+      transition:transform .5s ease, filter .5s ease;
+    }
+    .warrior-card:hover .portrait-img {
+      transform:scale(1.04);
+      filter:sepia(0%) contrast(1.1);
+    }
+
+    /* ---- Filter pills ---- */
+    .pill {
+      padding:.35rem .9rem; border-radius:9999px; font-size:.78rem; font-weight:600;
+      letter-spacing:.03em; background:rgba(24,27,34,.85); color:#A8A0A0;
+      border:1px solid rgba(197,160,89,.18); cursor:pointer; transition:all .25s ease; white-space:nowrap;
+    }
+    .pill:hover { border-color:#E2B86E; color:#fff; background:rgba(197,160,89,.15); }
+    .pill.active { background:linear-gradient(135deg,#D97724,#9B4412); color:#fff; border-color:#FBD38D; box-shadow:0 2px 10px rgba(217,119,36,.4); }
+
+    /* ---- Buttons ---- */
+    .btn-primary {
+      display:inline-flex; align-items:center; gap:.6rem; padding:.85rem 1.8rem;
+      background:linear-gradient(135deg,#D97724,#B84E1A); color:#fff;
+      font-family:'Cinzel',serif; font-size:.85rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+      border:1px solid rgba(255,255,255,.15); border-radius:6px; cursor:pointer;
+      box-shadow:0 4px 15px rgba(217,119,36,.35); transition:all .3s ease; text-decoration:none;
+    }
+    .btn-primary:hover { background:linear-gradient(135deg,#E6852F,#C85922); box-shadow:0 6px 25px rgba(217,119,36,.55); transform:translateY(-2px); }
+    .btn-secondary {
+      display:inline-flex; align-items:center; gap:.6rem; padding:.85rem 1.8rem;
+      background:rgba(18,20,26,.8); color:#E2B86E; font-family:'Cinzel',serif;
+      font-size:.85rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+      border:1px solid rgba(197,160,89,.35); border-radius:6px; cursor:pointer;
+      backdrop-filter:blur(8px); transition:all .3s ease; text-decoration:none;
+    }
+    .btn-secondary:hover { background:rgba(197,160,89,.15); border-color:#E2B86E; color:#fff; transform:translateY(-2px); }
+
+    /* ---- Section tag ---- */
+    .section-tag {
+      display:inline-flex; align-items:center; gap:.5rem; padding:.3rem .85rem;
+      background:rgba(197,160,89,.08); border:1px solid rgba(197,160,89,.3);
+      border-radius:9999px; font-size:.72rem; font-weight:600; text-transform:uppercase;
+      letter-spacing:.15em; color:#E2B86E;
+    }
+
+    /* ---- Timeline ---- */
+    .tl-line { position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,#D97724,#C5A059 40%,#2D6A4F 90%);transform:translateX(-50%); }
+    @media(max-width:768px){ .tl-line{left:24px;} }
+
+    /* ---- Spotlight ---- */
+    .spotlight-box {
+      background:radial-gradient(circle at center,#191B24,#0B0C10 75%);
+      border:1px solid rgba(197,160,89,.25); border-radius:16px;
+      box-shadow:0 20px 50px -10px rgba(0,0,0,.9),0 0 30px rgba(217,119,36,.15);
+    }
+
+    /* ---- Artifact cards ---- */
+    .artifact-card {
+      background:#11131A; border:1px solid rgba(197,160,89,.2); border-radius:10px;
+      cursor:pointer; transition:all .35s ease; overflow:hidden;
+    }
+    .artifact-card:hover { transform:translateY(-5px); border-color:#E2B86E; box-shadow:0 0 25px rgba(197,160,89,.25); }
+
+    /* ---- Modals ---- */
+    .modal-bg {
+      position:fixed;inset:0;z-index:100;background:rgba(5,6,8,.88);
+      backdrop-filter:blur(12px); display:flex;align-items:center;justify-content:center;
+      padding:1.5rem; opacity:0;pointer-events:none;transition:opacity .3s ease;
+    }
+    .modal-bg.open { opacity:1;pointer-events:auto; }
+    .modal-box {
+      background:#11131B; border:1px solid #C5A059; border-radius:12px;
+      max-width:860px;width:100%;max-height:90vh;overflow-y:auto;
+      transform:scale(.95); transition:transform .3s cubic-bezier(.16,1,.3,1);
+    }
+    .modal-bg.open .modal-box { transform:scale(1); }
+
+    /* ---- Drawer ---- */
+    .drawer {
+      position:fixed;top:0;right:0;bottom:0;width:100%;max-width:420px;z-index:90;
+      background:#0E1017;border-left:1px solid rgba(197,160,89,.3);
+      transform:translateX(100%);transition:transform .4s cubic-bezier(.16,1,.3,1);
+      display:flex;flex-direction:column;
+    }
+    .drawer.open { transform:translateX(0); }
+
+    /* ---- Wax Seal ---- */
+    .wax-seal {
+      display:inline-flex;align-items:center;justify-content:center;
+      border-radius:50%;background:radial-gradient(circle at 30% 30%,#C05621,#7B241C);
+      border:2px solid #E2B86E;box-shadow:0 4px 10px rgba(0,0,0,.6),inset 0 2px 4px rgba(255,255,255,.3);
+      color:#fff;font-family:'Cinzel',serif;font-weight:bold;
+    }
+
+    /* ---- Nav ---- */
+    .nav-link { color:#A0A0A8;text-decoration:none;font-size:.85rem;font-weight:500;letter-spacing:.05em;transition:color .2s; }
+    .nav-link:hover { color:#E2B86E; }
+    .nav-link.active { color:#E2B86E; }
+
+    /* ---- Vault BG image ---- */
+    .vault-bg-img {
+      background-image:url('images/vault_artifacts_bg.jpg');
+      background-size:cover; background-position:center;
+    }
+
+    /* ---- Card overlay for vault ---- */
+    .vault-overlay { background:rgba(0,0,0,.7); backdrop-filter:blur(2px); }
+
+    /* ---- Stamp edge ---- */
+    .stamp-frame { border:3px dashed rgba(197,160,89,.4); border-radius:6px; }
+
+    /* ---- Gallery portrait ---- */
+    .gallery-portrait { 
+      height:280px; object-fit:cover; object-position:top;
+      filter:sepia(15%) contrast(1.05); transition:filter .4s ease;
+    }
+    .gallery-card:hover .gallery-portrait { filter:sepia(0%); }
+    .gallery-card { border-radius:10px; overflow:hidden; cursor:pointer; border:1px solid rgba(197,160,89,.15); transition:all .35s ease; }
+    .gallery-card:hover { border-color:#C5A059; box-shadow:0 12px 30px rgba(0,0,0,.7),0 0 20px rgba(197,160,89,.2); transform:translateY(-5px); }
+
+    /* ---- Input ---- */
+    .form-input {
+      width:100%; padding:.6rem .85rem; background:#0E1017; border:1px solid #333847;
+      border-radius:6px; color:#F5EFEB; font-size:.9rem; font-family:'Outfit',sans-serif;
+      outline:none; transition:border-color .2s;
+    }
+    .form-input:focus { border-color:#C5A059; }
+    .form-input::placeholder { color:#5A5A6A; }
+
+    /* ---- Search wrapper ---- */
+    .search-wrap {
+      border-radius:10px; padding:3px;
+      background:linear-gradient(135deg,rgba(197,160,89,.5),rgba(217,119,36,.5),rgba(45,106,79,.5));
+      box-shadow:0 10px 35px -5px rgba(0,0,0,.8);
+    }
+    .search-inner {
+      background:#0E1017; border-radius:8px; padding:.7rem 1.1rem;
+      display:flex; align-items:center; gap:.75rem;
+    }
+    .search-input {
+      flex:1;background:transparent;border:none;outline:none;
+      color:#F5EFEB;font-size:1.05rem;font-family:'Outfit',sans-serif;
+    }
+    .search-input::placeholder { color:#5A5A6A; }
+
+    /* ---- Stat cards ---- */
+    .stat-card {
+      background:#131520;border:1px solid rgba(197,160,89,.12);border-radius:12px;
+      transition:all .3s ease;
+    }
+    .stat-card:hover { border-color:rgba(197,160,89,.4); transform:translateY(-3px); }
+
+    /* ---- Reduce motion ---- */
+    @media (prefers-reduced-motion:reduce) { *, *::before, *::after { animation-duration:.01ms!important;transition-duration:.01ms!important; } }
+
+    /* ---- Sound bar ---- */
+    .bar { width:2px;background:#E2B86E;border-radius:1px;height:4px;transition:height .15s ease; }
+    @keyframes wave1{0%,100%{height:4px}50%{height:14px}}
+    @keyframes wave2{0%,100%{height:8px}50%{height:4px}}
+    @keyframes wave3{0%,100%{height:12px}50%{height:6px}}
+    @keyframes wave4{0%,100%{height:5px}50%{height:13px}}
+    .playing .bar:nth-child(1){animation:wave1 .8s infinite}
+    .playing .bar:nth-child(2){animation:wave2 1.1s infinite .2s}
+    .playing .bar:nth-child(3){animation:wave3 .9s infinite .4s}
+    .playing .bar:nth-child(4){animation:wave4 1.2s infinite .1s}
+  </style>
+</head>
+
+<body>
+
+<!-- ═══════════════════════════════════════════════════════
+     STICKY NAV
+═══════════════════════════════════════════════════════ -->
+<header id="nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+  style="background:rgba(11,12,16,.9);backdrop-filter:blur(16px);border-bottom:1px solid rgba(197,160,89,.2);">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
+
+    <a href="#top" class="flex items-center gap-3">
+      <div class="wax-seal text-xs" style="width:36px;height:36px;">79</div>
+      <div>
+        <div class="font-cinzel font-bold text-sm text-amber-100 tracking-widest leading-none">UNSUNG WARRIORS</div>
+        <div class="text-[10px] text-amber-500 font-mono tracking-widest uppercase">OF SWARAJ · 1947–2026</div>
+      </div>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-7">
+      <a href="#discovery" class="nav-link">Discovery</a>
+      <a href="#timeline" class="nav-link">Timeline</a>
+      <a href="#spotlight" class="nav-link">Spotlight</a>
+      <a href="#women" class="nav-link">Veeranganas</a>
+      <a href="#vault" class="nav-link">Archive</a>
+      <a href="#aug15" class="nav-link font-semibold text-amber-400">15 August ✦</a>
+    </nav>
+
+    <div class="flex items-center gap-2.5">
+      <button id="audioBtn" title="Toggle Ambience"
+        class="px-3 py-1.5 rounded-full border border-amber-500/30 hover:border-amber-400 text-amber-300 text-xs font-mono flex items-center gap-2 transition-all"
+        style="background:rgba(24,27,34,.9);">
+        <div id="soundViz" class="flex items-end gap-[2px]">
+          <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </div>
+        <span class="hidden sm:inline">Ambience</span>
+      </button>
+
+      <button id="myArchiveBtn"
+        class="px-3.5 py-1.5 rounded-full border border-amber-500/40 hover:border-amber-400 text-amber-200 text-xs font-cinzel font-semibold flex items-center gap-1.5 transition-all"
+        style="background:rgba(197,160,89,.1);">
+        ★ My Archive
+        <span id="archiveBadge" class="hidden px-1.5 py-0.5 rounded-full bg-amber-500 text-black font-bold text-[9px]">0</span>
+      </button>
+
+      <button id="mobileMenuBtn" class="lg:hidden p-1.5 text-zinc-300">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobileNav" class="hidden lg:hidden border-t border-zinc-800 px-6 py-4 space-y-2" style="background:#0B0C10;">
+    <a href="#discovery" class="block py-1 text-sm font-cinzel text-zinc-300 hover:text-amber-300">Discovery Engine</a>
+    <a href="#timeline" class="block py-1 text-sm font-cinzel text-zinc-300 hover:text-amber-300">Timeline</a>
+    <a href="#spotlight" class="block py-1 text-sm font-cinzel text-zinc-300 hover:text-amber-300">Spotlight</a>
+    <a href="#women" class="block py-1 text-sm font-cinzel text-zinc-300 hover:text-amber-300">Veeranganas</a>
+    <a href="#vault" class="block py-1 text-sm font-cinzel text-zinc-300 hover:text-amber-300">Archive</a>
+    <a href="#aug15" class="block py-1 text-sm font-cinzel text-amber-300">15 August ✦</a>
+  </div>
+</header>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════════════ -->
+<section id="top" class="relative min-h-screen flex items-center justify-center text-center overflow-hidden pt-20">
+
+  <!-- Full bleed background image -->
+  <div class="absolute inset-0 z-0">
+    <img src="images/hero_bg.jpg" alt="Cinematic archival background showing India map with Ashoka Chakra"
+      class="w-full h-full object-cover object-center"
+      style="filter:brightness(.45) saturate(.85);">
+    <div class="absolute inset-0" style="background:linear-gradient(to bottom,rgba(11,12,16,.3) 0%,rgba(11,12,16,.15) 40%,rgba(11,12,16,.75) 85%,#0B0C10 100%);"></div>
+  </div>
+
+  <!-- Particle canvas -->
+  <canvas id="heroCanvas" class="absolute inset-0 z-10 pointer-events-none" style="width:100%;height:100%;"></canvas>
+
+  <!-- Floating fragments -->
+  <div class="absolute top-28 left-8 hidden md:block float-a z-20 pointer-events-none">
+    <div class="text-xs font-mono text-amber-400/40 italic" style="font-family:'Cormorant Garamond',serif;">Matangini Hazra · Tamluk 1942</div>
+  </div>
+  <div class="absolute bottom-36 left-12 hidden md:block float-b z-20 pointer-events-none">
+    <div class="text-xs font-mono text-amber-400/40 italic" style="font-family:'Cormorant Garamond',serif;">Birsa Munda · Ulgulan 1899</div>
+  </div>
+  <div class="absolute top-36 right-10 hidden md:block float-b z-20 pointer-events-none">
+    <div class="text-xs font-mono text-amber-400/40 italic" style="font-family:'Cormorant Garamond',serif;">Kanaklata Barua · Gohpur 1942</div>
+  </div>
+  <div class="absolute bottom-40 right-14 hidden md:block float-a z-20 pointer-events-none">
+    <div class="text-xs font-mono text-amber-400/40 italic" style="font-family:'Cormorant Garamond',serif;">Kuyili · Sivaganga 1780</div>
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-30 max-w-5xl mx-auto px-4 py-20 space-y-6">
+    <div class="section-tag mx-auto fade-in">
+      <span>🇮🇳</span>
+      <span>Independence Day Heritage Archive · 15 August 2026</span>
+    </div>
+
+    <div class="space-y-2 fade-in delay-1">
+      <h1 class="font-cinzel font-black text-5xl sm:text-7xl md:text-8xl gold-text leading-tight tracking-tight">
+        UNSUNG<br>WARRIORS
+      </h1>
+      <div class="font-cinzel text-2xl sm:text-4xl md:text-5xl font-bold saffron-text tracking-widest">
+        OF SWARAJ
+      </div>
+    </div>
+
+    <div class="tricolour w-28 mx-auto fade-in delay-2"></div>
+
+    <p class="font-cormorant text-xl sm:text-2xl text-zinc-300 italic max-w-2xl mx-auto leading-relaxed fade-in delay-2">
+      "The freedom story you were never taught completely."
+    </p>
+
+    <p class="text-zinc-400 text-sm sm:text-base max-w-xl mx-auto fade-in delay-3">
+      Independence was not won by a few names. It was built by millions of voices, sacrifices, rebellions, and forgotten heroes.
+    </p>
+
+    <div class="flex flex-wrap items-center justify-center gap-4 pt-4 fade-in delay-3">
+      <a href="#discovery" class="btn-primary">
+        ✦ ENTER THE DISCOVERY ENGINE <span>→</span>
+      </a>
+      <a href="#timeline" class="btn-secondary">
+        EXPLORE THE TIMELINE
+      </a>
+    </div>
+
+    <div class="pt-10 text-zinc-500 text-xs font-mono tracking-widest animate-bounce">
+      ↓ SCROLL TO ENTER THE LIVING ARCHIVE
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     SCALE SECTION
+═══════════════════════════════════════════════════════ -->
+<section class="py-24 border-y border-zinc-800/60" style="background:linear-gradient(to bottom,#0B0C10,#12141A,#0B0C10);">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-16">
+    <div class="text-center max-w-3xl mx-auto space-y-4 reveal">
+      <div class="section-tag mx-auto">Scale of Resistance</div>
+      <h2 class="font-cinzel text-3xl sm:text-5xl font-bold leading-tight">
+        You know the names.<br>
+        <span class="gold-text">But do you know the stories?</span>
+      </h2>
+      <p class="font-cormorant text-xl text-zinc-300 italic leading-relaxed">
+        For over two centuries, every forest, riverbank, mountain cliff, and village green witnessed uprisings against colonial rule.
+      </p>
+    </div>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 reveal">
+      <div class="stat-card p-6 text-center">
+        <div class="font-cinzel text-4xl md:text-5xl font-bold text-amber-400 mb-1">1,200+</div>
+        <div class="text-xs font-mono uppercase tracking-widest text-zinc-400">Documented Legends</div>
+        <div class="text-xs text-zinc-500 font-cormorant mt-1 italic">Preserved in state archives</div>
+      </div>
+      <div class="stat-card p-6 text-center">
+        <div class="font-cinzel text-4xl md:text-5xl font-bold text-emerald-400 mb-1">28</div>
+        <div class="text-xs font-mono uppercase tracking-widest text-zinc-400">States & 8 UTs</div>
+        <div class="text-xs text-zinc-500 font-cormorant mt-1 italic">Resistance from every corner</div>
+      </div>
+      <div class="stat-card p-6 text-center">
+        <div class="font-cinzel text-4xl md:text-5xl font-bold text-amber-400 mb-1">200+</div>
+        <div class="text-xs font-mono uppercase tracking-widest text-zinc-400">Years of Struggle</div>
+        <div class="text-xs text-zinc-500 font-cormorant mt-1 italic">1757 — 1947</div>
+      </div>
+      <div class="stat-card p-6 text-center">
+        <div class="font-cinzel text-4xl md:text-5xl font-bold text-rose-400 mb-1">∞</div>
+        <div class="text-xs font-mono uppercase tracking-widest text-zinc-400">Unsung Sacrifices</div>
+        <div class="text-xs text-zinc-500 font-cormorant mt-1 italic">Living in our memory</div>
+      </div>
+    </div>
+
+    <!-- Category pills -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 text-center text-xs reveal">
+      <div class="py-3 px-2 rounded-lg border border-zinc-800 text-zinc-300 font-mono" style="background:#0F1117;">🏹 Tribal Resistance</div>
+      <div class="py-3 px-2 rounded-lg border border-zinc-800 text-zinc-300 font-mono" style="background:#0F1117;">🌾 Peasant Rebellions</div>
+      <div class="py-3 px-2 rounded-lg border border-zinc-800 text-zinc-300 font-mono" style="background:#0F1117;">⚔️ Armed Insurgencies</div>
+      <div class="py-3 px-2 rounded-lg border border-zinc-800 text-zinc-300 font-mono" style="background:#0F1117;">👑 Women Veeranganas</div>
+      <div class="py-3 px-2 rounded-lg border border-zinc-800 text-zinc-300 font-mono" style="background:#0F1117;">📻 Underground Networks</div>
+      <div class="py-3 px-2 rounded-lg border border-zinc-800 text-zinc-300 font-mono" style="background:#0F1117;">🔒 Cellular Jail Heroes</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     DISCOVERY ENGINE
+═══════════════════════════════════════════════════════ -->
+<section id="discovery" class="py-24" style="background:#0E1017;">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-10">
+
+    <div class="text-center max-w-3xl mx-auto space-y-3 reveal">
+      <div class="section-tag mx-auto">AI Discovery Engine</div>
+      <h2 class="font-cinzel text-3xl sm:text-5xl font-bold">
+        DISCOVER THE <span class="gold-text">UNSUNG</span>
+      </h2>
+      <p class="font-cormorant text-xl text-zinc-300 italic">
+        "Search beyond the famous names. Query in natural language."
+      </p>
+    </div>
+
+    <!-- Search bar -->
+    <div class="max-w-3xl mx-auto space-y-3 reveal">
+      <div class="search-wrap">
+        <div class="search-inner">
+          <span class="text-amber-400 text-xl">✦</span>
+          <input id="searchInput" class="search-input" type="text"
+            placeholder="e.g. 'A woman revolutionary from Bengal', 'Tribal fighter in 1857'...">
+          <button id="discoverBtn" class="btn-primary py-2 px-4 text-xs">Discover</button>
+        </div>
+      </div>
+
+      <!-- Quick prompts -->
+      <div class="flex flex-wrap gap-2 text-xs">
+        <span class="text-zinc-500 font-mono">Try:</span>
+        <button class="prompt-pill px-2.5 py-1 rounded border border-zinc-700 hover:border-amber-400 text-zinc-300 transition-colors" style="background:#0F1117;" data-q="A woman revolutionary from Bengal">"A woman revolutionary from Bengal"</button>
+        <button class="prompt-pill px-2.5 py-1 rounded border border-zinc-700 hover:border-amber-400 text-zinc-300 transition-colors" style="background:#0F1117;" data-q="A tribal freedom fighter">"A tribal freedom fighter"</button>
+        <button class="prompt-pill px-2.5 py-1 rounded border border-zinc-700 hover:border-amber-400 text-zinc-300 transition-colors" style="background:#0F1117;" data-q="Someone who fought in 1857">"Someone who fought in 1857"</button>
+        <button class="prompt-pill px-2.5 py-1 rounded border border-zinc-700 hover:border-amber-400 text-zinc-300 transition-colors" style="background:#0F1117;" data-q="Northeast freedom fighters">"Northeast fighters"</button>
+        <button class="prompt-pill px-2.5 py-1 rounded border border-zinc-700 hover:border-amber-400 text-zinc-300 transition-colors" style="background:#0F1117;" data-q="Young martyrs under 25">"Young martyrs"</button>
+      </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="reveal rounded-xl p-5 space-y-4 border border-zinc-800/60" style="background:rgba(14,16,23,.7);">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div>
+          <div class="text-[10px] font-mono uppercase tracking-widest text-zinc-500 mb-2">ERA</div>
+          <div id="filterEra" class="flex flex-wrap gap-1.5"></div>
+        </div>
+        <div>
+          <div class="text-[10px] font-mono uppercase tracking-widest text-zinc-500 mb-2">REGION</div>
+          <div id="filterRegion" class="flex flex-wrap gap-1.5"></div>
+        </div>
+        <div>
+          <div class="text-[10px] font-mono uppercase tracking-widest text-zinc-500 mb-2">ROLE</div>
+          <div id="filterRole" class="flex flex-wrap gap-1.5"></div>
+        </div>
+        <div>
+          <div class="text-[10px] font-mono uppercase tracking-widest text-zinc-500 mb-2">MOVEMENT</div>
+          <div id="filterMovement" class="flex flex-wrap gap-1.5"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI reasoning -->
+    <div id="aiReasoning" class="hidden reveal"></div>
+
+    <!-- Count bar -->
+    <div class="flex items-center justify-between border-b border-zinc-800 pb-3 text-xs font-mono reveal">
+      <span id="resultsCount" class="text-amber-300 font-semibold">Loading...</span>
+      <span class="text-zinc-500">Sourced from National & State Archives</span>
+    </div>
+
+    <!-- Cards grid -->
+    <div id="cardsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     TIMELINE
+═══════════════════════════════════════════════════════ -->
+<section id="timeline" class="py-24 border-t border-zinc-800" style="background:#0D0F15;">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 space-y-12">
+    <div class="text-center max-w-3xl mx-auto space-y-3 reveal">
+      <div class="section-tag mx-auto">1757 → 1947</div>
+      <h2 class="font-cinzel text-3xl sm:text-5xl font-bold">THE ROAD TO <span class="gold-text">SWARAJ</span></h2>
+      <p class="font-cormorant text-xl text-zinc-300 italic">200 years of relentless resistance.</p>
+    </div>
+
+    <!-- Era filter -->
+    <div id="tlFilter" class="flex flex-wrap justify-center gap-2 reveal"></div>
+
+    <!-- Timeline container -->
+    <div class="relative reveal">
+      <div class="tl-line"></div>
+      <div id="tlContainer" class="space-y-6 pt-2"></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     SPOTLIGHT
+═══════════════════════════════════════════════════════ -->
+<section id="spotlight" class="py-24 border-t border-zinc-800" style="background:#090A0E;">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 space-y-10">
+    <div class="text-center max-w-2xl mx-auto space-y-2 reveal">
+      <div class="section-tag mx-auto">Cinematic Spotlight</div>
+      <h2 class="font-cinzel text-3xl sm:text-4xl font-bold">
+        ONE NAME. ONE LIFE. <span class="saffron-text">ONE SACRIFICE.</span>
+      </h2>
+      <p class="font-cormorant text-lg text-zinc-400 italic">"There are moments in history when a single heartbeat defines a nation."</p>
+    </div>
+
+    <div class="spotlight-box p-8 sm:p-12 reveal">
+      <div id="spotlightStage"></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     SURPRISE ME
+═══════════════════════════════════════════════════════ -->
+<section class="py-20 border-t border-zinc-800 text-center" style="background:#0F1118;">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 space-y-8">
+    <div class="space-y-3 reveal">
+      <div class="section-tag mx-auto">Archival Oracle</div>
+      <h2 class="font-cinzel text-3xl sm:text-4xl font-bold">SURPRISE ME</h2>
+      <p class="font-cormorant text-xl text-zinc-300 italic">"Give me a freedom fighter I've probably never heard of."</p>
+    </div>
+
+    <div class="reveal">
+      <button id="surpriseBtn" class="btn-primary py-3.5 px-10 text-sm group">
+        <span class="group-hover:rotate-180 transition-transform inline-block text-lg">✦</span>
+        DISCOVER A RANDOM WARRIOR
+      </button>
+    </div>
+
+    <div id="surpriseStage" class="reveal"></div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     WOMEN WHO RESISTED
+═══════════════════════════════════════════════════════ -->
+<section id="women" class="py-24 border-t border-zinc-800" style="background:#0A0C11;">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-12">
+    <div class="text-center max-w-3xl mx-auto space-y-3 reveal">
+      <div class="section-tag mx-auto">Veeranganas of Swaraj</div>
+      <h2 class="font-cinzel text-3xl sm:text-5xl font-bold">THE WOMEN WHO <span class="saffron-text">RESISTED</span></h2>
+      <p class="font-cormorant text-xl text-zinc-300 italic">
+        "From armed queens and teenage commandos to underground radio broadcasters — women stood on the frontline."
+      </p>
+    </div>
+
+    <!-- Women portrait gallery (3 featured with images + grid for rest) -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal">
+      <!-- Kanaklata — with real portrait image -->
+      <div class="gallery-card" data-warrior="kanaklata-barua">
+        <div class="relative overflow-hidden">
+          <img src="images/portrait_kanaklata.jpg" alt="Kanaklata Barua — Young woman revolutionary from Assam" class="gallery-portrait w-full">
+          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(11,12,16,1) 0%,rgba(11,12,16,.3) 50%,transparent 100%);"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-4">
+            <div class="text-xs font-mono text-emerald-400 mb-0.5">Assam · 1924–1942</div>
+            <h3 class="font-cinzel font-bold text-lg text-amber-100">Kanaklata Barua</h3>
+            <p class="text-xs text-amber-400 italic">Birbala of Assam</p>
+          </div>
+        </div>
+        <div class="p-4 space-y-2" style="background:#13151D;">
+          <p class="font-cormorant text-zinc-300 text-sm italic line-clamp-2">"I may be killed, but the Tricolour will not touch the dust while I breathe."</p>
+          <button class="text-amber-400 text-xs font-cinzel font-semibold hover:translate-x-1 transition-transform">Discover Her Story →</button>
+        </div>
+      </div>
+
+      <!-- Matangini — with real portrait image -->
+      <div class="gallery-card" data-warrior="matangini-hazra">
+        <div class="relative overflow-hidden">
+          <img src="images/portrait_matangini.jpg" alt="Matangini Hazra — Gandhi Buri of Bengal" class="gallery-portrait w-full">
+          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(11,12,16,1) 0%,rgba(11,12,16,.3) 50%,transparent 100%);"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-4">
+            <div class="text-xs font-mono text-emerald-400 mb-0.5">Bengal · 1870–1942</div>
+            <h3 class="font-cinzel font-bold text-lg text-amber-100">Matangini Hazra</h3>
+            <p class="text-xs text-amber-400 italic">Gandhi Buri</p>
+          </div>
+        </div>
+        <div class="p-4 space-y-2" style="background:#13151D;">
+          <p class="font-cormorant text-zinc-300 text-sm italic line-clamp-2">"Shoot if you must, but Vande Mataram will not cease from my lips."</p>
+          <button class="text-amber-400 text-xs font-cinzel font-semibold hover:translate-x-1 transition-transform">Discover Her Story →</button>
+        </div>
+      </div>
+
+      <!-- Rani Gaidinliu -->
+      <div class="gallery-card" data-warrior="rani-gaidinliu">
+        <div class="relative overflow-hidden h-[280px]" style="background:linear-gradient(135deg,#1a1c2c,#2d1b12);">
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="wax-seal text-3xl font-cinzel font-black text-amber-100 border-amber-400" style="width:110px;height:110px;background:radial-gradient(circle at 30% 30%,#2d1b69,#0d0e1a);">RG</div>
+          </div>
+          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(11,12,16,1) 0%,rgba(11,12,16,.2) 60%,transparent 100%);"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-4">
+            <div class="text-xs font-mono text-emerald-400 mb-0.5">Manipur · 1915–1993</div>
+            <h3 class="font-cinzel font-bold text-lg text-amber-100">Rani Gaidinliu</h3>
+            <p class="text-xs text-amber-400 italic">Rani of the Nagas</p>
+          </div>
+        </div>
+        <div class="p-4 space-y-2" style="background:#13151D;">
+          <p class="font-cormorant text-zinc-300 text-sm italic line-clamp-2">"We are free people. The white men have no right to rule over our hills."</p>
+          <button class="text-amber-400 text-xs font-cinzel font-semibold hover:translate-x-1 transition-transform">Discover Her Story →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Full women grid -->
+    <div id="womenGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 reveal"></div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     EARLY REVOLTS
+═══════════════════════════════════════════════════════ -->
+<section class="py-24 border-t border-zinc-800" style="background:#0D0F15;">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-12">
+    <div class="text-center max-w-3xl mx-auto space-y-3 reveal">
+      <div class="section-tag mx-auto">Pre-1857 Indigenous Resistance</div>
+      <h2 class="font-cinzel text-3xl sm:text-5xl font-bold">THE REVOLTS BEFORE THE <span class="gold-text">REVOLUTION</span></h2>
+      <p class="font-cormorant text-xl text-zinc-300 italic">
+        "India's struggle for freedom did not begin with one movement or one generation."
+      </p>
+    </div>
+    <div id="revoltsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal"></div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     ARCHIVAL VAULT — with background image
+═══════════════════════════════════════════════════════ -->
+<section id="vault" class="py-24 border-t border-zinc-800 relative overflow-hidden">
+  <!-- Background image with dark overlay -->
+  <div class="absolute inset-0 z-0 vault-bg-img">
+    <div class="absolute inset-0" style="background:rgba(11,12,16,.88);"></div>
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 space-y-12">
+    <div class="text-center max-w-3xl mx-auto space-y-3 reveal">
+      <div class="section-tag mx-auto">Physical Museum Artifacts</div>
+      <h2 class="font-cinzel text-3xl sm:text-5xl font-bold">THE ARCHIVAL <span class="gold-text">VAULT</span></h2>
+      <p class="font-cormorant text-xl text-zinc-200 italic">
+        "Inspect secret telegrams, underground radio logs, and prison ledgers from the freedom struggle."
+      </p>
+    </div>
+    <div id="vaultGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal"></div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     COMMUNITY ARCHIVE
+═══════════════════════════════════════════════════════ -->
+<section class="py-24 border-t border-zinc-800" style="background:#0E1017;">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 space-y-10">
+    <div class="text-center space-y-3 reveal">
+      <div class="section-tag mx-auto">Community Archive</div>
+      <h2 class="font-cinzel text-3xl sm:text-5xl font-bold">WRITE THEIR NAME INTO <span class="saffron-text">HISTORY</span></h2>
+      <p class="font-cormorant text-xl text-zinc-300 italic max-w-xl mx-auto">"If history forgot them, let us remember them."</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start reveal">
+      <form id="csForm" class="space-y-4 p-6 rounded-xl border border-zinc-800" style="background:#0B0C10;">
+        <div>
+          <label class="block text-xs font-mono uppercase text-zinc-400 mb-1">Freedom Fighter Name *</label>
+          <input id="csName" type="text" required class="form-input" placeholder="e.g. Ramchandra Biswas">
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-mono uppercase text-zinc-400 mb-1">Region *</label>
+            <input id="csRegion" type="text" required class="form-input" placeholder="e.g. Bankura, Bengal">
+          </div>
+          <div>
+            <label class="block text-xs font-mono uppercase text-zinc-400 mb-1">Era *</label>
+            <input id="csYears" type="text" required class="form-input" placeholder="e.g. 1857–1942">
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-mono uppercase text-zinc-400 mb-1">Contribution / Story *</label>
+          <textarea id="csStory" rows="3" required class="form-input resize-none" placeholder="Describe their role in the freedom struggle..."></textarea>
+        </div>
+        <div>
+          <label class="block text-xs font-mono uppercase text-zinc-400 mb-1">Source / Reference</label>
+          <input id="csSource" type="text" class="form-input" placeholder="Family oral history / Local Gazetteer...">
+        </div>
+        <button type="submit" class="w-full btn-primary py-2.5 text-xs justify-center">✦ ADD TO DIGITAL ARCHIVE</button>
+        <div id="csSuccess" class="hidden p-3 rounded text-center text-xs font-mono text-emerald-300 border border-emerald-800" style="background:rgba(34,80,56,.3);">
+          ✓ Story archived! Thank you for preserving this memory.
+        </div>
+      </form>
+
+      <div class="space-y-3">
+        <div class="text-xs font-mono text-zinc-500 text-center uppercase tracking-widest">LIVE ARCHIVAL STAMP PREVIEW</div>
+        <div id="stampPreview" class="stamp-frame p-5 rounded-lg space-y-3" style="background:#0B0C10;">
+          <div class="text-[10px] font-mono uppercase tracking-widest text-amber-400 border-b border-amber-500/20 pb-1.5">Community Heritage Submission · Status: Pending Verification</div>
+          <div>
+            <div class="text-[11px] font-mono text-emerald-400" id="pvRegion">Region · Era</div>
+            <h4 class="font-cinzel text-lg font-bold text-amber-100" id="pvName">Warrior Name</h4>
+          </div>
+          <p class="font-cormorant text-zinc-300 text-sm italic leading-relaxed" id="pvStory">Their story will appear here as you type...</p>
+          <div class="text-[10px] font-mono text-zinc-500 border-t border-zinc-800 pt-1.5" id="pvSource">Source: —</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     15 AUGUST MOMENT
+═══════════════════════════════════════════════════════ -->
+<section id="aug15" class="py-28 border-t border-amber-500/20 text-center relative overflow-hidden" style="background:linear-gradient(to bottom,#0B0C10,#1A140E,#0B0C10);">
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full pointer-events-none" style="background:rgba(217,119,36,.07);filter:blur(60px);"></div>
+
+  <div class="relative max-w-3xl mx-auto px-4 sm:px-6 space-y-8">
+    <div class="wax-seal text-sm mx-auto" style="width:64px;height:64px;">15<br>AUG</div>
+
+    <div class="reveal space-y-2">
+      <h2 class="font-cinzel text-5xl sm:text-7xl font-black saffron-text tracking-wide">15 AUGUST</h2>
+      <h3 class="font-cinzel text-2xl sm:text-3xl font-bold text-amber-100">INDIA REMEMBERS.</h3>
+    </div>
+
+    <p class="font-cormorant text-xl sm:text-2xl text-zinc-300 italic max-w-xl mx-auto leading-relaxed reveal">
+      "Remembrance should not end today. Discover one story you didn't know, and carry their name forward."
+    </p>
+
+    <div class="p-6 sm:p-8 rounded-2xl border border-amber-500/40 shadow-2xl max-w-md mx-auto reveal" style="background:rgba(11,12,16,.9);">
+      <div class="text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">SWARAJ PLEDGE COUNTER</div>
+      <div id="pledgeCount" class="font-cinzel text-5xl font-extrabold text-amber-300 mb-4">1,47,820</div>
+      <div class="flex flex-col gap-2.5">
+        <button id="pledgeBtn" class="btn-primary py-3 justify-center text-xs">✦ TAKE THE SWARAJ PLEDGE</button>
+        <button id="certBtn" class="btn-secondary py-2.5 justify-center text-xs">Download Remembrance Certificate</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     FINAL CTA
+═══════════════════════════════════════════════════════ -->
+<section class="py-24 border-t border-zinc-800 text-center" style="background:#0B0C10;">
+  <div class="max-w-2xl mx-auto px-4 space-y-6 reveal">
+    <h2 class="font-cinzel text-3xl sm:text-5xl font-bold text-amber-100">FREEDOM HAS MANY NAMES.</h2>
+    <p class="font-cormorant text-xl text-zinc-300 italic">"You know some of them. Now discover the rest."</p>
+    <div class="tricolour w-32 mx-auto"></div>
+    <div class="flex flex-wrap justify-center gap-4 pt-2">
+      <a href="#discovery" class="btn-primary text-xs">ENTER THE ARCHIVE →</a>
+      <a href="#aug15" class="btn-secondary text-xs">TAKE THE PLEDGE</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════════ -->
+<footer class="py-12 border-t border-zinc-800" style="background:#050608;">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-8">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <div class="wax-seal text-xs" style="width:32px;height:32px;">SW</div>
+        <div>
+          <div class="font-cinzel font-bold text-amber-100 text-sm tracking-widest">UNSUNG WARRIORS OF SWARAJ</div>
+          <div class="text-[11px] text-zinc-500 font-mono">Remembering the names history almost forgot.</div>
+        </div>
+      </div>
+      <div class="flex flex-wrap justify-center gap-6 text-[11px] font-cinzel text-zinc-400">
+        <a href="#discovery" class="hover:text-amber-300">Discovery</a>
+        <a href="#timeline" class="hover:text-amber-300">Timeline</a>
+        <a href="#spotlight" class="hover:text-amber-300">Spotlight</a>
+        <a href="#women" class="hover:text-amber-300">Veeranganas</a>
+        <a href="#vault" class="hover:text-amber-300">Archive</a>
+        <a href="#aug15" class="hover:text-amber-300">15 August</a>
+      </div>
+    </div>
+    <div class="border-t border-zinc-900 pt-6 flex flex-col md:flex-row items-center justify-between gap-3 text-[11px] text-zinc-600">
+      <div>Built as an Independence Day digital heritage experience · Sources: National Archives of India & State Gazetteers.</div>
+      <div class="font-mono text-amber-500/70">SATYAMEVA JAYATE · 79th Independence Day</div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     MODALS & DRAWERS
+═══════════════════════════════════════════════════════ -->
+
+<!-- Warrior Dossier Modal -->
+<div id="dossierModal" class="modal-bg">
+  <div class="modal-box"><div id="dossierContent"></div></div>
+</div>
+
+<!-- First Discovery Modal -->
+<div id="discoveryModal" class="modal-bg">
+  <div class="p-8 rounded-2xl border-2 border-amber-500 max-w-md w-full text-center space-y-5 shadow-2xl" style="background:#0B0C10;">
+    <div class="wax-seal text-base mx-auto" style="width:48px;height:48px;">✦</div>
+    <div>
+      <div class="text-xs font-mono uppercase tracking-widest text-amber-400 mb-1">YOU JUST DISCOVERED A STORY</div>
+      <h3 id="discoveryName" class="font-cinzel text-2xl font-bold text-amber-100"></h3>
+    </div>
+    <p class="font-cormorant text-lg text-zinc-300 italic leading-relaxed">
+      "Their story existed before you arrived.<br>Now it exists in your memory."
+    </p>
+    <div class="flex flex-col gap-2">
+      <button id="discoveryRememberBtn" class="btn-primary text-xs justify-center py-2.5">★ REMEMBER THIS STORY</button>
+      <button id="discoveryCloseBtn" class="btn-secondary text-xs justify-center py-2">Continue Exploring</button>
+    </div>
+  </div>
+</div>
+
+<!-- Certificate Modal -->
+<div id="certModal" class="modal-bg">
+  <div class="max-w-2xl w-full p-4 space-y-4">
+    <div id="certBox" class="rounded-xl overflow-hidden" style="background:#F6EFE9;color:#1A1815;border:6px double #8C6D37;padding:2.5rem;position:relative;font-family:'Cormorant Garamond',serif;">
+      <!-- Rendered by JS -->
+    </div>
+    <div class="flex justify-center gap-3">
+      <button onclick="window.print()" class="btn-primary text-xs">Print / Save PDF</button>
+      <button id="closeCertBtn" class="btn-secondary text-xs">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Artifact Inspector Modal -->
+<div id="artifactModal" class="modal-bg">
+  <div class="modal-box max-w-2xl"><div id="artifactContent"></div></div>
+</div>
+
+<!-- My Archive Drawer -->
+<div id="drawerOverlay" class="fixed inset-0 z-80 hidden" style="background:rgba(0,0,0,.6);backdrop-filter:blur(8px);"></div>
+<div id="archiveDrawer" class="drawer">
+  <div class="px-5 py-4 border-b border-zinc-800 flex items-center justify-between" style="background:#12141A;">
+    <div class="flex items-center gap-2">
+      <span class="wax-seal text-xs" style="width:28px;height:28px;">★</span>
+      <span class="font-cinzel font-bold text-base text-amber-100">My Saved Archive</span>
+    </div>
+    <button id="closeDrawerBtn" class="w-7 h-7 rounded-full flex items-center justify-center text-zinc-400 hover:text-white" style="background:#1E2030;">✕</button>
+  </div>
+  <div id="drawerList" class="flex-grow overflow-y-auto p-5 space-y-3"></div>
+  <div class="p-5 border-t border-zinc-800" style="background:#0E1017;">
+    <button id="drawerCertBtn" class="w-full btn-primary text-xs justify-center py-2.5">📜 Download Swaraj Certificate</button>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     SCRIPTS
+═══════════════════════════════════════════════════════ -->
+<script type="module">
+// ─── DATA imports via inline (no ES modules server issues) ───────────
+import { WARRIORS_DATA, REGIONS_LIST, ERAS_LIST, ROLES_LIST, MOVEMENTS_LIST } from './js/data/warriorsData.js';
+import { TIMELINE_DATA } from './js/data/timelineData.js';
+import { ARTIFACTS_DATA } from './js/data/artifactsData.js';
+import { MOVEMENTS_DATA } from './js/data/movementsData.js';
+
+// ─── IMAGE MAP ──────────────────────────────────────────────────────
+const portraitImages = {
+  'kanaklata-barua':    'images/portrait_kanaklata.jpg',
+  'matangini-hazra':    'images/portrait_matangini.jpg',
+  'birsa-munda':        'images/portrait_birsa.jpg',
+  'surya-sen':          'images/portrait_surya_sen.jpg',
+  'kuyili':             'images/portrait_kuyili.jpg',
+  'rani-gaidinliu':     'images/portrait_rani_gaidinliu.jpg',
+  'u-tirot-sing':       'images/portrait_u_tirot_sing.jpg',
+  'peer-ali-khan':      'images/portrait_peer_ali_khan.jpg',
+  'durgawati-devi':     'images/portrait_durgawati_devi.jpg',
+  'pritilata-waddedar': 'images/portrait_kanaklata.jpg',
+};
+
+// ─── AVATAR PALETTE (for warriors without portrait photos) ──────────
+const avatarConfig = {
+  'bakshi-jagabandhu':   { bg:'#1a2e1a', accent:'#4ade80', initials:'BJ', symbol:'⚔️' },
+  'usha-mehta':          { bg:'#1a1a2e', accent:'#818cf8', initials:'UM', symbol:'📻' },
+  'sidhu-kanhu-murmu':   { bg:'#2e1a0a', accent:'#fb923c', initials:'SK', symbol:'🏹' },
+  'khudiram-bose':       { bg:'#2e0a0a', accent:'#f87171', initials:'KB', symbol:'🔥' },
+  'sangolli-rayanna':    { bg:'#1a2e1a', accent:'#4ade80', initials:'SR', symbol:'⚔️' },
+  'tiruppur-kumaran':    { bg:'#2e1a00', accent:'#fbbf24', initials:'TK', symbol:'🚩' },
+  'begum-hazrat-mahal':  { bg:'#1a0a2e', accent:'#c084fc', initials:'BH', symbol:'👑' },
+  'kushal-konwar':       { bg:'#0a2e1a', accent:'#34d399', initials:'KK', symbol:'🌿' },
+  'matadin-bhangi':      { bg:'#2e2a00', accent:'#facc15', initials:'MB', symbol:'✊' },
+  'akkamma-cherian':     { bg:'#2e0a1a', accent:'#fb7185', initials:'AC', symbol:'🌸' },
+  'kartar-singh-sarabha':{ bg:'#2e1a00', accent:'#f97316', initials:'KS', symbol:'🔥' },
+  'shankar-shah-raghunath':{ bg:'#1a0a2e', accent:'#a78bfa', initials:'SS', symbol:'⚔️' },
+  'jhalkaribai':         { bg:'#2e0a0a', accent:'#f87171', initials:'JB', symbol:'👑' },
+  'tantia-bhil':         { bg:'#1a2e0a', accent:'#86efac', initials:'TB', symbol:'🏹' },
+  'shoorvir-pasaltha':   { bg:'#0a1a2e', accent:'#7dd3fc', initials:'SP', symbol:'🗡️' },
+  'maniram-dewan':       { bg:'#2e1a0a', accent:'#fca5a5', initials:'MD', symbol:'🌿' },
+  'senapati-bapat':      { bg:'#1a2e2e', accent:'#5eead4', initials:'SB', symbol:'✊' },
+  'devi-chaudhurani':    { bg:'#2e0a2e', accent:'#f0abfc', initials:'DC', symbol:'⚔️' },
+  'captain-lakshmi-sahgal':{ bg:'#0a2e1a', accent:'#4ade80', initials:'LS', symbol:'⚕️' },
+  'rani-chennamma':      { bg:'#2e1400', accent:'#fb923c', initials:'RC', symbol:'👑' },
+  'baikuntha-shukla':    { bg:'#2e0a0a', accent:'#fca5a5', initials:'BS', symbol:'🔥' },
+  'suniti-santi':        { bg:'#1a0a2e', accent:'#c084fc', initials:'SS', symbol:'🌸' },
+  'alluri-sitarama-raju':{ bg:'#1a2e0a', accent:'#86efac', initials:'AR', symbol:'🏹' },
+};
+
+// ─── HERO CANVAS ─────────────────────────────────────────────────────
+(function() {
+  const canvas = document.getElementById('heroCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H;
+  function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const particles = Array.from({length: 60}, () => ({
+    x: Math.random() * 1400, y: Math.random() * 900,
+    r: Math.random() * 1.8 + 0.5,
+    vx: (Math.random() - 0.5) * 0.3, vy: -(Math.random() * 0.35 + 0.1),
+    a: Math.random() * 0.5 + 0.15,
+    c: Math.random() > 0.5 ? '#E2B86E' : '#D97724'
+  }));
+
+  function tick() {
+    ctx.clearRect(0, 0, W, H);
+    for (const p of particles) {
+      p.x += p.vx; p.y += p.vy;
+      if (p.y < -5) { p.y = H + 5; p.x = Math.random() * W; }
+      if (p.x < -5) p.x = W + 5;
+      if (p.x > W + 5) p.x = -5;
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+      ctx.fillStyle = p.c; ctx.globalAlpha = p.a;
+      ctx.shadowBlur = 6; ctx.shadowColor = p.c; ctx.fill();
+    }
+    ctx.globalAlpha = 1; ctx.shadowBlur = 0;
+    requestAnimationFrame(tick);
+  }
+  tick();
+
+  // Parallax
+  window.addEventListener('mousemove', e => {
+    document.querySelectorAll('.float-a, .float-b').forEach((el, i) => {
+      const s = (i+1) * 0.018;
+      el.style.transform = `translate(${(e.clientX - W/2)*s}px,${(e.clientY - H/2)*s}px)`;
+    });
+  });
+})();
+
+// ─── SCROLL REVEAL ───────────────────────────────────────────────────
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// ─── MOBILE NAV ──────────────────────────────────────────────────────
+document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+  document.getElementById('mobileNav').classList.toggle('hidden');
+});
+document.querySelectorAll('#mobileNav a').forEach(a => a.addEventListener('click', () => {
+  document.getElementById('mobileNav').classList.add('hidden');
+}));
+
+// ─── NAV SCROLL EFFECT ───────────────────────────────────────────────
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('nav');
+  if (window.scrollY > 80) {
+    nav.style.background = 'rgba(11,12,16,.97)';
+    nav.style.borderBottomColor = 'rgba(197,160,89,.3)';
+  } else {
+    nav.style.background = 'rgba(11,12,16,.9)';
+  }
+});
+
+// ─── LOCAL STORAGE (Saved Archive) ──────────────────────────────────
+function getSaved() { try { return JSON.parse(localStorage.getItem('sw_saved') || '[]'); } catch { return []; } }
+function setSaved(arr) { try { localStorage.setItem('sw_saved', JSON.stringify(arr)); } catch {} }
+function isSaved(id) { return getSaved().includes(id); }
+function toggleSave(id) {
+  let arr = getSaved();
+  const wasSaved = arr.includes(id);
+  arr = wasSaved ? arr.filter(x => x !== id) : [...arr, id];
+  setSaved(arr);
+  updateBadge();
+  renderDrawer();
+  return !wasSaved;
+}
+function updateBadge() {
+  const n = getSaved().length;
+  const b = document.getElementById('archiveBadge');
+  b.textContent = n; b.classList.toggle('hidden', n === 0);
+}
+updateBadge();
+
+// ─── AUDIO ──────────────────────────────────────────────────────────
+let audioCtx, gainNode, oscs = [], playing = false;
+function initAudio() {
+  if (audioCtx) return;
+  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  gainNode = audioCtx.createGain(); gainNode.gain.value = 0.07; gainNode.connect(audioCtx.destination);
+}
+function playAmbience() {
+  initAudio();
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+  stopAmbience();
+  [146.83, 220, 293.66, 73.41].forEach((f, i) => {
+    const o = audioCtx.createOscillator(), g = audioCtx.createGain(), filt = audioCtx.createBiquadFilter();
+    o.type = i%2===0 ? 'sine' : 'triangle'; o.frequency.value = f;
+    filt.type = 'lowpass'; filt.frequency.value = 500 + i*80;
+    g.gain.setValueAtTime(.001, audioCtx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.025, audioCtx.currentTime + 3);
+    o.connect(filt); filt.connect(g); g.connect(gainNode); o.start();
+    oscs.push({o,g});
+  });
+  playing = true;
+  document.getElementById('soundViz').classList.add('playing');
+  document.getElementById('audioBtn').classList.add('text-amber-300');
+}
+function stopAmbience() {
+  oscs.forEach(({o,g}) => {
+    try { g.gain.exponentialRampToValueAtTime(.0001, audioCtx.currentTime+.8); setTimeout(()=>{try{o.stop();}catch{}},900); } catch {}
+  });
+  oscs = []; playing = false;
+  document.getElementById('soundViz').classList.remove('playing');
+}
+function chime() {
+  initAudio();
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+  const o = audioCtx.createOscillator(), g = audioCtx.createGain();
+  o.type = 'sine'; o.frequency.setValueAtTime(880, audioCtx.currentTime);
+  o.frequency.exponentialRampToValueAtTime(440, audioCtx.currentTime + 1.5);
+  g.gain.setValueAtTime(0.15, audioCtx.currentTime);
+  g.gain.exponentialRampToValueAtTime(.0001, audioCtx.currentTime + 1.8);
+  o.connect(g); g.connect(gainNode); o.start(); o.stop(audioCtx.currentTime + 2);
+}
+document.getElementById('audioBtn').addEventListener('click', () => {
+  playing ? stopAmbience() : playAmbience();
+});
+
+// ─── MODAL HELPERS ───────────────────────────────────────────────────
+function openModal(id) { document.getElementById(id).classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closeModal(id) { document.getElementById(id).classList.remove('open'); document.body.style.overflow = ''; }
+['dossierModal','discoveryModal','certModal','artifactModal'].forEach(id => {
+  document.getElementById(id).addEventListener('click', e => { if (e.target.id === id) closeModal(id); });
+});
+
+// ─── DRAWER ──────────────────────────────────────────────────────────
+document.getElementById('myArchiveBtn').addEventListener('click', () => {
+  renderDrawer(); document.getElementById('archiveDrawer').classList.add('open');
+  document.getElementById('drawerOverlay').classList.remove('hidden');
+});
+function closeDrawer() {
+  document.getElementById('archiveDrawer').classList.remove('open');
+  document.getElementById('drawerOverlay').classList.add('hidden');
+}
+document.getElementById('closeDrawerBtn').addEventListener('click', closeDrawer);
+document.getElementById('drawerOverlay').addEventListener('click', closeDrawer);
+document.getElementById('drawerCertBtn').addEventListener('click', () => { closeDrawer(); openCertModal(); });
+
+function renderDrawer() {
+  const list = document.getElementById('drawerList');
+  const saved = getSaved();
+  const warriors = WARRIORS_DATA.filter(w => saved.includes(w.id));
+  if (!warriors.length) {
+    list.innerHTML = `<div class="text-center py-12 px-4"><div class="wax-seal mx-auto mb-4 text-xs" style="width:40px;height:40px;">✦</div><p class="font-cinzel text-amber-200 text-base mb-2">No Stories Saved Yet</p><p class="text-zinc-400 text-sm font-cormorant">Open any warrior's dossier and click ★ Remember to save them here.</p></div>`;
+    return;
+  }
+  list.innerHTML = warriors.map(w => `
+    <div class="p-3.5 rounded-lg border border-amber-500/20 hover:border-amber-500/50 transition-colors flex items-center justify-between gap-3 cursor-pointer group" style="background:#0E1017;" onclick="openDossier('${w.id}')">
+      <div>
+        <div class="text-[11px] font-mono text-amber-400">${w.region} · ${w.years}</div>
+        <div class="font-cinzel font-semibold text-sm text-zinc-100 group-hover:text-amber-300">${w.name}</div>
+        <div class="text-xs text-zinc-400 italic">${w.title || w.role}</div>
+      </div>
+      <button class="text-zinc-500 hover:text-red-400 text-sm p-1 remove-saved" data-id="${w.id}">✕</button>
+    </div>`).join('');
+  list.querySelectorAll('.remove-saved').forEach(btn => {
+    btn.addEventListener('click', e => { e.stopPropagation(); toggleSave(btn.dataset.id); });
+  });
+}
+
+// ─── FIRST DISCOVERY ─────────────────────────────────────────────────
+let firstDiscovery = !localStorage.getItem('sw_first_done');
+let pendingWarrior = null;
+function triggerFirstDiscovery(w) {
+  if (!firstDiscovery) return;
+  firstDiscovery = false;
+  localStorage.setItem('sw_first_done','1');
+  pendingWarrior = w;
+  document.getElementById('discoveryName').textContent = w.name;
+  openModal('discoveryModal');
+  chime();
+}
+document.getElementById('discoveryRememberBtn').addEventListener('click', () => {
+  if (pendingWarrior) toggleSave(pendingWarrior.id);
+  closeModal('discoveryModal');
+});
+document.getElementById('discoveryCloseBtn').addEventListener('click', () => closeModal('discoveryModal'));
+
+// ─── WARRIOR DOSSIER ────────────────────────────────────────────────
+window.openDossier = function(id) {
+  const w = WARRIORS_DATA.find(x => x.id === id);
+  if (!w) return;
+  triggerFirstDiscovery(w);
+  const imgSrc = portraitImages[id];
+  const av = avatarConfig[id];
+  const initials = w.name.split(' ').map(n=>n[0]).slice(0,2).join('');
+  const saved = isSaved(id);
+
+  document.getElementById('dossierContent').innerHTML = `
+    <div class="sticky top-0 z-10 px-5 py-3.5 flex items-center justify-between border-b border-amber-500/20" style="background:rgba(17,19,27,.97);backdrop-filter:blur(12px);">
+      <div class="flex items-center gap-2">
+        <div class="wax-seal text-[9px]" style="width:28px;height:28px;">SW</div>
+        <div class="text-[10px] font-mono text-amber-400 uppercase tracking-wider">Archival Dossier · ${w.era}</div>
+      </div>
+      <div class="flex items-center gap-2">
+        <button id="dSpeakBtn" class="px-2.5 py-1 rounded border border-amber-500/30 hover:border-amber-400 text-amber-300 text-xs font-mono transition-colors" style="background:#0B0C10;">▶ Listen</button>
+        <button id="dSaveBtn" class="px-2.5 py-1 rounded border border-zinc-700 hover:border-amber-400 text-xs flex items-center gap-1 transition-colors ${saved?'text-amber-400':'text-zinc-300'}" style="background:#0B0C10;">
+          <span id="dSaveStar">${saved?'★':'☆'}</span> Remember
+        </button>
+        <button id="dCloseBtn" class="w-7 h-7 rounded-full flex items-center justify-center text-zinc-400 hover:text-white text-lg" style="background:#1E2030;">✕</button>
+      </div>
+    </div>
+
+    ${imgSrc ? `
+    <div class="relative h-56 sm:h-72 overflow-hidden">
+      <img src="${imgSrc}" alt="Portrait of ${w.name}" class="w-full h-full object-cover object-top" style="filter:sepia(15%);">
+      <div class="absolute inset-0" style="background:linear-gradient(to top,#11131B 0%,rgba(17,19,27,.2) 50%,transparent 100%);"></div>
+      <div class="absolute bottom-0 left-0 p-6">
+        <div class="text-xs font-mono text-emerald-400">${w.region} · ${w.state}</div>
+        <h2 class="font-cinzel text-2xl sm:text-3xl font-bold text-amber-100">${w.name}</h2>
+        <div class="text-sm text-amber-400 italic">${w.title||w.role} · ${w.years}</div>
+      </div>
+    </div>` : av ? `
+    <div class="relative h-40 overflow-hidden flex items-center px-6 pt-4" style="background:linear-gradient(135deg,${av.bg},#0B0C10);">
+      <div class="flex items-center gap-5">
+        <div class="w-20 h-20 rounded-full border-2 flex items-center justify-center flex-shrink-0 text-3xl" style="border-color:${av.accent};background:rgba(0,0,0,.5);box-shadow:0 0 20px ${av.accent}44;">
+          ${av.symbol}
+        </div>
+        <div>
+          <div class="text-xs font-mono mb-0.5" style="color:${av.accent}aa;">${w.region} · ${w.state}</div>
+          <h2 class="font-cinzel text-2xl sm:text-3xl font-bold text-amber-100">${w.name}</h2>
+          <div class="text-sm italic" style="color:${av.accent};">${w.title||w.role} · ${w.years}</div>
+        </div>
+      </div>
+    </div>` : `
+    <div class="px-6 pt-6 flex items-start gap-4">
+      <div class="w-16 h-16 rounded-full border-2 border-amber-400/80 flex items-center justify-center font-cinzel font-bold text-xl text-amber-100 flex-shrink-0" style="background:radial-gradient(circle,#4a3010,#1a1200);">${initials}</div>
+      <div>
+        <div class="text-xs font-mono text-emerald-400">${w.region} · ${w.state}</div>
+        <h2 class="font-cinzel text-2xl font-bold text-amber-100">${w.name}</h2>
+        <div class="text-sm text-amber-400 italic">${w.title||w.role} · ${w.years}</div>
+      </div>
+    </div>`}
+
+    <div class="p-6 space-y-6">
+      <div class="p-4 rounded-lg border-l-4 border-amber-500 font-cormorant text-amber-200 text-lg italic leading-relaxed" style="background:rgba(200,120,36,.1);">
+        "${w.quote}"
+      </div>
+
+      <div>
+        <div class="text-xs font-mono uppercase tracking-widest text-amber-400 mb-3 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-amber-400"></span>Verified Historical Chronicle</div>
+        <div class="font-cormorant text-base leading-relaxed text-zinc-200 whitespace-pre-line p-4 rounded-lg border border-zinc-800" style="background:#0B0C10;">${w.detailedStory}</div>
+      </div>
+
+      <div>
+        <div class="text-xs font-mono uppercase tracking-widest text-emerald-400 mb-2 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-emerald-400"></span>Legacy & Significance</div>
+        <p class="text-sm text-zinc-200 p-3 rounded border border-emerald-500/20 leading-relaxed" style="background:rgba(45,106,79,.1);">${w.significance}</p>
+      </div>
+
+      <div>
+        <div class="text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">Archival Sources</div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+          ${w.sources.map(s=>`<div class="p-2.5 rounded border border-zinc-800 text-xs" style="background:#0B0C10;"><div class="text-zinc-300 font-medium mb-0.5">${s.title}</div><div class="text-amber-400 font-mono text-[10px]">${s.linkText}</div></div>`).join('')}
+        </div>
+      </div>
+    </div>`;
+
+  openModal('dossierModal');
+
+  document.getElementById('dCloseBtn').onclick = () => closeModal('dossierModal');
+  document.getElementById('dSaveBtn').onclick = () => {
+    const now = toggleSave(id);
+    document.getElementById('dSaveStar').textContent = now ? '★' : '☆';
+    document.getElementById('dSaveBtn').classList.toggle('text-amber-400', now);
+    chime();
+  };
+
+  let speaking = false;
+  document.getElementById('dSpeakBtn').onclick = function() {
+    if (speaking) {
+      speechSynthesis.cancel(); speaking = false; this.textContent = '▶ Listen';
+    } else {
+      const u = new SpeechSynthesisUtterance(`${w.name}. ${w.summary}. Quote: ${w.quote}.`);
+      u.rate = 0.95;
+      const voice = speechSynthesis.getVoices().find(v => v.lang.includes('en-IN'));
+      if (voice) u.voice = voice;
+      u.onend = () => { speaking = false; this.textContent = '▶ Listen'; };
+      speechSynthesis.speak(u); speaking = true; this.textContent = '■ Stop';
+    }
+  };
+};
+
+// Close dossier
+document.getElementById('dossierModal').addEventListener('click', e => {
+  if (e.target === document.getElementById('dossierModal')) { speechSynthesis.cancel(); closeModal('dossierModal'); }
+});
+
+// ─── WARRIOR CARD GENERATOR ──────────────────────────────────────────
+function makeCard(w) {
+  const imgSrc = portraitImages[w.id];
+  const av = avatarConfig[w.id];
+  const initials = w.name.split(' ').map(n=>n[0]).slice(0,2).join('');
+  const saved = isSaved(w.id);
+
+  // Build the portrait/avatar area
+  let portraitHtml;
+  if (imgSrc) {
+    portraitHtml = `<img src="${imgSrc}" alt="${w.name}" class="portrait-img">`;
+  } else if (av) {
+    portraitHtml = `
+      <div class="w-full h-full flex flex-col items-center justify-center gap-2" style="background:linear-gradient(135deg,${av.bg},#0B0C10);">
+        <div class="text-3xl">${av.symbol}</div>
+        <div class="font-cinzel font-black text-3xl" style="color:${av.accent};text-shadow:0 0 20px ${av.accent}66;">${av.initials}</div>
+        <div class="text-[10px] font-mono uppercase tracking-widest" style="color:${av.accent}88;">${w.movement}</div>
+      </div>`;
+  } else {
+    portraitHtml = `
+      <div class="w-full h-full flex items-center justify-center" style="background:linear-gradient(135deg,#1a1200,#0B0C10);">
+        <span class="font-cinzel text-3xl font-bold text-amber-200">${initials}</span>
+      </div>`;
+  }
+
+  return `
+    <div class="warrior-card group relative" onclick="openDossier('${w.id}')">
+      <div class="card-top-bar"></div>
+      <div class="relative overflow-hidden" style="height:220px;background:#0B0C10;">
+        ${portraitHtml}
+        <div class="absolute inset-0" style="background:linear-gradient(to top,#13151D 0%,transparent 60%);"></div>
+        <button class="bookmark-btn absolute top-3 right-3 w-8 h-8 rounded-full flex items-center justify-center text-base transition-transform hover:scale-110 ${saved?'text-amber-400':'text-zinc-400'}" style="background:rgba(0,0,0,.65);border:1px solid rgba(197,160,89,.3);" data-id="${w.id}" onclick="event.stopPropagation()">
+          ${saved?'★':'☆'}
+        </button>
+        <div class="absolute bottom-0 left-0 right-0 p-3">
+          <div class="text-[11px] font-mono text-emerald-400 leading-none">${w.region}</div>
+          <div class="text-[10px] font-mono text-zinc-400">${w.years}</div>
+        </div>
+      </div>
+      <div class="p-4 flex flex-col flex-grow" style="background:#13151D;">
+        <h3 class="font-cinzel text-base font-bold text-amber-100 group-hover:text-amber-300 transition-colors leading-snug mb-0.5">${w.name}</h3>
+        <p class="text-xs text-amber-400/90 italic mb-2">${w.title||w.role}</p>
+        <p class="font-cormorant text-sm text-zinc-300 leading-relaxed mb-3 line-clamp-3">"${w.summary}"</p>
+        <div class="mt-auto flex items-center justify-between border-t border-zinc-800 pt-2.5 text-xs">
+          <span class="px-2 py-0.5 rounded text-amber-300 font-mono" style="background:rgba(200,120,36,.12);border:1px solid rgba(200,120,36,.25);">${w.movement}</span>
+          <span class="font-cinzel text-amber-400 group-hover:translate-x-1 transition-transform">Discover →</span>
+        </div>
+      </div>
+    </div>`;
+}
+
+// ─── DISCOVERY ENGINE ────────────────────────────────────────────────
+let filterEra='All Eras', filterRegion='All Regions', filterRole='All Roles', filterMovement='All Movements', query='';
+
+function buildPills(containerId, list, getter, setter) {
+  const el = document.getElementById(containerId);
+  el.innerHTML = list.map((v,i) => `<button class="pill ${i===0?'active':''}" data-v="${v}">${v}</button>`).join('');
+  el.querySelectorAll('.pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      el.querySelectorAll('.pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      setter(btn.dataset.v);
+      runFilter();
+    });
+  });
+}
+
+buildPills('filterEra', ERAS_LIST, ()=>filterEra, v=>filterEra=v);
+buildPills('filterRegion', REGIONS_LIST, ()=>filterRegion, v=>filterRegion=v);
+buildPills('filterRole', ROLES_LIST, ()=>filterRole, v=>filterRole=v);
+buildPills('filterMovement', MOVEMENTS_LIST, ()=>filterMovement, v=>filterMovement=v);
+
+function interpretQuery(q) {
+  if (!q) return { results: WARRIORS_DATA, reason: null };
+  const lq = q.toLowerCase();
+  const matchedTags = [];
+  const results = WARRIORS_DATA.filter(w => {
+    let score = 0;
+    const matchers = [
+      [{re:/woman|female|girl|rani/}, {check: w => w.role==='Woman Revolutionary', tag:'Women Revolutionaries'}],
+      [{re:/tribal|adivasi|indigenous|munda|santhal|khasi|bhil|naga|gond/}, {check: w => w.role==='Tribal Leader'||w.tags.some(t=>t.toLowerCase().includes('tribal')), tag:'Tribal Resistance'}],
+      [{re:/1857|mutiny|sepoy/}, {check: w => w.movement==='1857', tag:'1857 War'}],
+      [{re:/northeast|assam|meghalaya|manipur|nagaland|mizoram/}, {check: w => w.region==='Northeast India', tag:'Northeast India'}],
+      [{re:/bengal|chittagong|calcutta|kolkata/}, {check: w => w.state.toLowerCase().includes('bengal'), tag:'Bengal'}],
+      [{re:/south|tamil|kerala|karnataka|andhra/}, {check: w => w.region==='South India', tag:'South India'}],
+      [{re:/quit india|1942/}, {check: w => w.movement==='Quit India', tag:'Quit India'}],
+      [{re:/young|teen|student|under 2/}, {check: w => w.ageAtSacrifice&&w.ageAtSacrifice<=25, tag:'Youth Martyrs'}],
+    ];
+    for (const [{re}, {check, tag}] of matchers) {
+      if (re.test(lq) && check(w)) { score += 5; if (!matchedTags.includes(tag)) matchedTags.push(tag); }
+    }
+    if (w.name.toLowerCase().includes(lq)) score += 10;
+    if (w.summary.toLowerCase().includes(lq)) score += 3;
+    if (w.state.toLowerCase().includes(lq)) score += 3;
+    if (w.whyMatchKeywords?.some(k => lq.includes(k))) score += 3;
+    w._score = score;
+    return score > 0;
+  }).sort((a,b) => b._score - a._score);
+
+  const reason = matchedTags.length
+    ? `Identified: ${matchedTags.join(' + ')}. Displaying ${results.length} relevant historical records.`
+    : `Found ${results.length} records matching "${q}".`;
+
+  return { results, reason };
+}
+
+function runFilter() {
+  let list = WARRIORS_DATA;
+  let reason = null;
+
+  if (query) { const r = interpretQuery(query); list = r.results; reason = r.reason; }
+  if (filterRegion !== 'All Regions') list = list.filter(w => w.region === filterRegion);
+  if (filterEra !== 'All Eras') list = list.filter(w => w.era === filterEra);
+  if (filterRole !== 'All Roles') list = list.filter(w => w.role === filterRole);
+  if (filterMovement !== 'All Movements') list = list.filter(w => w.movement === filterMovement);
+
+  const grid = document.getElementById('cardsGrid');
+  const countEl = document.getElementById('resultsCount');
+  const reasonEl = document.getElementById('aiReasoning');
+
+  countEl.textContent = `${list.length} Stories Documented`;
+
+  if (reason) {
+    reasonEl.classList.remove('hidden');
+    reasonEl.innerHTML = `<div class="flex items-start gap-3 p-3.5 rounded-lg border border-amber-500/30 text-sm" style="background:rgba(200,120,36,.1);">
+      <span class="text-amber-400 font-bold mt-0.5">✦</span>
+      <div><strong class="text-amber-300">WHY THIS STORY?</strong> — <span class="text-amber-200">${reason}</span></div>
+    </div>`;
+  } else { reasonEl.classList.add('hidden'); }
+
+  if (!list.length) {
+    grid.innerHTML = `<div class="col-span-full text-center py-16 px-4 rounded-xl border border-zinc-800" style="background:#0F1117;">
+      <div class="font-cinzel text-amber-400 text-xl mb-2">No Records Found</div>
+      <p class="text-zinc-400 text-sm max-w-sm mx-auto mb-5">Try broadening your search or resetting filters.</p>
+      <button onclick="resetFilters()" class="btn-secondary text-xs">Reset All Filters</button>
+    </div>`;
+    return;
+  }
+
+  grid.innerHTML = list.map(w => makeCard(w)).join('');
+
+  // Bookmark buttons
+  grid.querySelectorAll('.bookmark-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.id;
+      const nowSaved = toggleSave(id);
+      btn.textContent = nowSaved ? '★' : '☆';
+      btn.classList.toggle('text-amber-400', nowSaved);
+      btn.classList.toggle('text-zinc-400', !nowSaved);
+      if (nowSaved) chime();
+    });
+  });
+}
+
+window.resetFilters = function() {
+  query = ''; filterEra='All Eras'; filterRegion='All Regions'; filterRole='All Roles'; filterMovement='All Movements';
+  document.getElementById('searchInput').value = '';
+  document.querySelectorAll('#filterEra .pill, #filterRegion .pill, #filterRole .pill, #filterMovement .pill').forEach(p => {
+    p.classList.toggle('active', p.dataset.v.startsWith('All'));
+  });
+  runFilter();
+};
+
+document.getElementById('searchInput').addEventListener('input', e => { query = e.target.value.trim(); runFilter(); });
+document.getElementById('discoverBtn').addEventListener('click', () => { query = document.getElementById('searchInput').value.trim(); runFilter(); });
+document.querySelectorAll('.prompt-pill').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.getElementById('searchInput').value = btn.dataset.q;
+    query = btn.dataset.q; runFilter();
+    document.getElementById('discovery').scrollIntoView({behavior:'smooth'});
+  });
+});
+
+runFilter();
+
+// ─── TIMELINE ────────────────────────────────────────────────────────
+const eras = ['All Eras','1750–1800','1800–1850','1850–1900','1900–1919','1920–1930','1930–1942','1942–1947'];
+const tlFilter = document.getElementById('tlFilter');
+tlFilter.innerHTML = eras.map((e,i) => `<button class="pill ${i===0?'active':''}" data-era="${e}">${e}</button>`).join('');
+
+function renderTimeline(filter) {
+  const items = filter==='All Eras' ? TIMELINE_DATA : TIMELINE_DATA.filter(t=>t.era===filter);
+  document.getElementById('tlContainer').innerHTML = items.map((item,idx) => {
+    const isLeft = idx%2===0;
+    return `
+      <div class="timeline-node flex flex-col md:flex-row items-center w-full relative mb-8">
+        <!-- content side -->
+        <div class="w-full md:w-1/2 ${isLeft?'md:pr-10 md:text-right':'md:order-2 md:pl-10'} pl-14 md:pl-0">
+          <div class="p-5 rounded-xl border border-zinc-800 hover:border-amber-500/50 transition-all shadow-xl group" style="background:#0B0C10;">
+            <div class="flex items-center gap-2 mb-1.5 ${isLeft?'md:justify-end':''}">
+              <span class="text-xs font-mono font-bold text-amber-400 px-2 py-0.5 rounded" style="background:rgba(200,120,36,.12);border:1px solid rgba(200,120,36,.25);">${item.year}</span>
+              <span class="text-xs text-zinc-500 font-mono">· ${item.location}</span>
+            </div>
+            <h3 class="font-cinzel text-base font-bold text-amber-100 group-hover:text-amber-300 transition-colors mb-1">${item.title}</h3>
+            <div class="text-xs font-semibold text-emerald-400 mb-2">${item.hero}</div>
+            <p class="font-cormorant text-sm text-zinc-300 leading-relaxed">${item.description}</p>
+          </div>
+        </div>
+
+        <!-- Centre dot -->
+        <div class="absolute left-4 md:left-1/2 -translate-x-1/2 z-10 w-9 h-9 rounded-full border-2 border-amber-400 flex items-center justify-center font-cinzel text-[10px] font-bold text-amber-300" style="background:#0B0C10;box-shadow:0 0 12px rgba(197,160,89,.35);">
+          ${item.year.slice(-2)}
+        </div>
+
+        <!-- Empty opposite side -->
+        <div class="hidden md:block md:w-1/2 ${isLeft?'md:order-2':''}"></div>
+      </div>`;
+  }).join('');
+}
+
+tlFilter.querySelectorAll('.pill').forEach(btn => {
+  btn.addEventListener('click', () => {
+    tlFilter.querySelectorAll('.pill').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderTimeline(btn.dataset.era);
+  });
+});
+renderTimeline('All Eras');
+
+// ─── SPOTLIGHT ───────────────────────────────────────────────────────
+const spotlights = [
+  { id:'kanaklata-barua', name:'Kanaklata Barua', place:'Gohpur, Assam', moment:'20 September 1942', sacrifice:'A 17-year-old clutched the Tricolour as bullets struck her, refusing to let it touch the dust even as life slipped away.', context:'Leader of the Mrityu Bahini youth corps during the Quit India Movement.' },
+  { id:'matangini-hazra', name:'Matangini Hazra', place:'Tamluk, Bengal', moment:'29 September 1942', sacrifice:'At age 72, shot in both arms, she continued marching forward singing Vande Mataram until she collapsed on the soil.', context:'Led 6,000 peasant women to establish the Tamralipta National Government.' },
+  { id:'kuyili', name:'Kuyili', place:'Sivaganga, Tamil Nadu', moment:'Vijayadashami 1780', sacrifice:'Drenched in temple lamp oil, she set herself ablaze and leaped into the British arsenal — destroying their entire regional firepower.', context:'Commander-in-Chief of Queen Velu Nachiyar\'s Udaiyal Padai women\'s army.' },
+  { id:'birsa-munda', name:'Birsa Munda', place:'Dombari Hill, Jharkhand', moment:'9 June 1900', sacrifice:'Died under mysterious circumstances in British solitary confinement at age 25, having fought to protect ancestral tribal lands.', context:'Dharti Aaba (Father of Earth) who led the Munda Ulgulan.' },
+  { id:'surya-sen', name:'Masterda Surya Sen', place:'Chittagong, Bengal', moment:'18 April 1930', sacrifice:'Before being hanged after gruesome torture, declared: "Keep the flag of freedom flying and complete the unfinished revolution."', context:'Led the Chittagong Armoury Raid, liberating the district for four glorious days.' },
+  { id:'peer-ali-khan', name:'Peer Ali Khan', place:'Patna, Bihar', moment:'7 July 1857', sacrifice:'Hanged publicly in Patna, he warned from the gallows that thousands of rebels would rise from every drop of his blood.', context:'Humble bookseller who ran the underground intelligence network for the 1857 uprising.' }
+];
+let spotIdx = 0;
+
+function renderSpotlight(idx) {
+  const item = spotlights[idx];
+  const stage = document.getElementById('spotlightStage');
+  const imgSrc = portraitImages[item.id];
+  stage.style.opacity = '0'; stage.style.transform = 'translateY(8px)';
+
+  setTimeout(() => {
+    stage.innerHTML = `
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        ${imgSrc ? `
+        <div class="relative rounded-xl overflow-hidden shadow-2xl" style="height:380px;">
+          <img src="${imgSrc}" alt="${item.name}" class="w-full h-full object-cover object-top" style="filter:sepia(20%);">
+          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(9,10,14,.9) 0%,transparent 60%);"></div>
+          <div class="absolute bottom-0 left-0 p-5">
+            <div class="text-xs font-mono text-emerald-400">${item.place}</div>
+            <div class="font-mono text-sm font-bold text-amber-300">${item.moment}</div>
+          </div>
+        </div>` : `
+        <div class="flex items-center justify-center rounded-xl" style="height:380px;background:linear-gradient(135deg,#1a1c2c,#2d1b12);">
+          <div class="wax-seal text-4xl font-cinzel font-black" style="width:120px;height:120px;">${item.name.split(' ').map(n=>n[0]).slice(0,2).join('')}</div>
+        </div>`}
+
+        <div class="space-y-6 text-left">
+          <div>
+            <div class="text-xs font-mono tracking-widest text-amber-500 uppercase mb-1">ONE NAME</div>
+            <h2 class="font-cinzel text-3xl sm:text-4xl font-bold text-amber-100">${item.name}</h2>
+          </div>
+          <div class="border-y border-amber-500/20 py-3 grid grid-cols-2 gap-3">
+            <div><div class="text-[11px] font-mono text-emerald-400 uppercase tracking-wider">ONE PLACE</div><div class="font-cinzel text-sm text-zinc-200">${item.place}</div></div>
+            <div><div class="text-[11px] font-mono text-amber-400 uppercase tracking-wider">ONE MOMENT</div><div class="font-mono text-sm font-bold text-amber-300">${item.moment}</div></div>
+          </div>
+          <div>
+            <div class="text-[11px] font-mono text-rose-400 uppercase tracking-wider mb-1">ONE SACRIFICE</div>
+            <p class="font-cormorant text-xl text-zinc-100 italic leading-relaxed">"${item.sacrifice}"</p>
+            <p class="text-xs text-zinc-400 font-mono mt-2">${item.context}</p>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <button class="btn-primary text-xs" onclick="openDossier('${item.id}')">Open Full Dossier →</button>
+            <button class="btn-secondary text-xs" id="spotlightNextBtn">Discover Another Warrior ↻</button>
+          </div>
+        </div>
+      </div>`;
+
+    stage.style.transition = 'all .4s ease';
+    stage.style.opacity = '1'; stage.style.transform = 'translateY(0)';
+
+    document.getElementById('spotlightNextBtn').addEventListener('click', () => {
+      chime(); spotIdx = (spotIdx+1) % spotlights.length; renderSpotlight(spotIdx);
+    });
+  }, 200);
+}
+renderSpotlight(0);
+
+// ─── SURPRISE ME ────────────────────────────────────────────────────
+document.getElementById('surpriseBtn').addEventListener('click', () => {
+  chime();
+  const w = WARRIORS_DATA[Math.floor(Math.random()*WARRIORS_DATA.length)];
+  const imgSrc = portraitImages[w.id];
+  const stage = document.getElementById('surpriseStage');
+  stage.style.opacity = '0'; stage.style.transform = 'scale(.95)';
+  setTimeout(() => {
+    stage.innerHTML = `
+      <div class="p-6 rounded-xl border-2 border-amber-500/60 shadow-2xl max-w-2xl mx-auto text-left" style="background:#0B0C10;">
+        <div class="flex items-start gap-5 mb-4">
+          ${imgSrc ? `<img src="${imgSrc}" alt="${w.name}" class="w-24 h-28 rounded-lg object-cover object-top flex-shrink-0" style="filter:sepia(15%);">` : `<div class="w-24 h-28 rounded-lg flex items-center justify-center font-cinzel font-bold text-xl text-amber-100 flex-shrink-0" style="background:radial-gradient(circle,#4a3010,#1a1200);">${w.name.split(' ').map(n=>n[0]).slice(0,2).join('')}</div>`}
+          <div>
+            <div class="text-xs font-mono text-amber-400 mb-1">ARCHIVAL ORACLE SELECTION</div>
+            <div class="text-[11px] font-mono text-zinc-400">${w.state} · ${w.years}</div>
+            <h3 class="font-cinzel text-xl font-bold text-amber-100">${w.name}</h3>
+            <p class="text-xs text-amber-400 italic">${w.title||w.role}</p>
+          </div>
+        </div>
+        <div class="p-3.5 rounded border-l-4 border-amber-500 font-cormorant text-amber-200 text-base italic mb-3" style="background:rgba(200,120,36,.1);">"${w.quote}"</div>
+        <p class="font-cormorant text-zinc-300 text-sm leading-relaxed mb-4">${w.summary}</p>
+        <div class="flex flex-wrap gap-3">
+          <button class="btn-primary text-xs" onclick="openDossier('${w.id}')">Explore Full Story →</button>
+          <button class="btn-secondary text-xs" id="surpriseAgainBtn">Draw Another Name ↻</button>
+        </div>
+      </div>`;
+    stage.style.transition = 'all .4s ease'; stage.style.opacity = '1'; stage.style.transform = 'scale(1)';
+    document.getElementById('surpriseAgainBtn').addEventListener('click', () => document.getElementById('surpriseBtn').click());
+  }, 200);
+});
+
+// ─── WOMEN GRID ─────────────────────────────────────────────────────
+const womenWarriors = WARRIORS_DATA.filter(w => w.role === 'Woman Revolutionary');
+const featuredWomen = ['kanaklata-barua','matangini-hazra','rani-gaidinliu'];
+const otherWomen = womenWarriors.filter(w => !featuredWomen.includes(w.id));
+document.getElementById('womenGrid').innerHTML = otherWomen.map(w => `
+  <div class="p-4 rounded-xl border border-zinc-800 hover:border-amber-500/50 transition-all cursor-pointer group" style="background:#0B0C10;" onclick="openDossier('${w.id}')">
+    <div class="flex items-center gap-3 mb-3">
+      <div class="w-12 h-12 rounded-full border border-amber-400/60 flex items-center justify-center font-cinzel font-bold text-sm text-amber-100 flex-shrink-0" style="background:radial-gradient(circle,#4a2010,#1a0a00);">
+        ${w.name.split(' ').map(n=>n[0]).slice(0,2).join('')}
+      </div>
+      <div>
+        <div class="text-[11px] font-mono text-emerald-400">${w.region}</div>
+        <div class="font-cinzel font-bold text-sm text-zinc-100 group-hover:text-amber-300 transition-colors">${w.name}</div>
+        <div class="text-[11px] text-amber-400/80 italic">${w.title||w.role}</div>
+      </div>
+    </div>
+    <p class="font-cormorant text-xs text-zinc-400 leading-relaxed mb-2 italic line-clamp-2">"${w.quote}"</p>
+    <div class="text-[11px] font-cinzel text-amber-400 font-semibold group-hover:translate-x-1 transition-transform">Discover Her Story →</div>
+  </div>`).join('');
+
+document.querySelectorAll('.gallery-card').forEach(card => {
+  const id = card.dataset.warrior;
+  if (id) card.addEventListener('click', () => openDossier(id));
+});
+
+// ─── EARLY REVOLTS ───────────────────────────────────────────────────
+document.getElementById('revoltsGrid').innerHTML = MOVEMENTS_DATA.map(m => `
+  <div class="p-5 rounded-xl border border-zinc-800 hover:border-amber-500/50 transition-all shadow-xl space-y-3" style="background:#0B0C10;">
+    <div class="flex items-center justify-between">
+      <span class="text-xs font-mono font-bold text-amber-400 px-2 py-0.5 rounded" style="background:rgba(200,120,36,.12);border:1px solid rgba(200,120,36,.25);">${m.period}</span>
+      <span class="text-xs text-emerald-400 font-mono">${m.badge}</span>
+    </div>
+    <h3 class="font-cinzel text-base font-bold text-amber-100">${m.name}</h3>
+    <p class="text-[11px] font-mono text-zinc-500">${m.region}</p>
+    <div class="p-2.5 rounded text-xs font-mono space-y-1 border border-zinc-800" style="background:#12141A;">
+      <div><span class="text-zinc-500">LEADERS:</span> <span class="text-amber-300">${m.leaders}</span></div>
+    </div>
+    <p class="font-cormorant text-sm text-zinc-300 leading-relaxed">${m.narrative}</p>
+    <div class="text-xs text-emerald-400/80 font-mono border-t border-zinc-800 pt-2">${m.legacy}</div>
+  </div>`).join('');
+
+// ─── ARCHIVAL VAULT ──────────────────────────────────────────────────
+document.getElementById('vaultGrid').innerHTML = ARTIFACTS_DATA.map(art => `
+  <div class="artifact-card" onclick="openArtifact('${art.id}')">
+    <div class="p-5 space-y-3">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded border border-amber-500/30 flex items-center justify-center text-amber-300 font-mono text-xs font-bold flex-shrink-0" style="background:rgba(200,120,36,.1);">${art.year.slice(-2)}</div>
+        <div><span class="text-[10px] font-mono text-emerald-400 uppercase tracking-wider block">${art.category}</span><span class="text-[11px] text-zinc-400 font-mono">${art.date}</span></div>
+      </div>
+      <h3 class="font-cinzel text-sm font-bold text-amber-100 leading-snug">${art.title}</h3>
+      <div class="p-3 rounded border border-zinc-700 text-xs font-cormorant text-zinc-300 italic line-clamp-3" style="background:rgba(0,0,0,.4);">"${art.snippetText}"</div>
+      <div class="flex items-center justify-between text-xs pt-1 border-t border-zinc-800">
+        <span class="text-zinc-500 font-mono">${art.dimensions}</span>
+        <span class="font-cinzel text-amber-400 font-semibold group-hover:translate-x-1 transition-transform">Inspect 🔍</span>
+      </div>
+    </div>
+  </div>`).join('');
+
+window.openArtifact = function(id) {
+  const art = ARTIFACTS_DATA.find(a=>a.id===id);
+  if (!art) return;
+  chime();
+  document.getElementById('artifactContent').innerHTML = `
+    <div class="sticky top-0 px-5 py-3.5 flex items-center justify-between border-b border-amber-500/20" style="background:rgba(17,19,27,.97);backdrop-filter:blur(12px);">
+      <h3 class="font-cinzel text-base font-bold text-amber-100">${art.title}</h3>
+      <button onclick="closeModal('artifactModal')" class="w-7 h-7 rounded-full flex items-center justify-center text-zinc-400 hover:text-white" style="background:#1E2030;">✕</button>
+    </div>
+    <div class="p-6 space-y-5">
+      <div class="p-5 rounded-lg border-2 border-amber-500/40" style="background:#1D1B18;">
+        <div class="text-[10px] font-mono uppercase tracking-widest text-amber-500 mb-2 pb-1 border-b border-amber-500/20">Archival Transcription · ${art.dimensions}</div>
+        <p class="font-cormorant text-lg italic leading-relaxed py-1" style="color:#F6EFE9;">${art.snippetText}</p>
+        <div class="text-right text-xs font-mono text-amber-400/70 mt-2">[${art.provenance}]</div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono">
+        <div class="p-3 rounded border border-zinc-800" style="background:#0B0C10;"><span class="text-zinc-500 block mb-0.5">ARCHIVE REFERENCE</span><span class="text-amber-300">${art.archiveReference}</span></div>
+        <div class="p-3 rounded border border-zinc-800" style="background:#0B0C10;"><span class="text-zinc-500 block mb-0.5">PHYSICAL MEDIUM</span><span class="text-zinc-300">${art.material}</span></div>
+      </div>
+      <div>
+        <div class="text-xs font-mono uppercase tracking-widest text-emerald-400 mb-2">Historical Context</div>
+        <p class="font-cormorant text-base leading-relaxed text-zinc-200 p-4 rounded border border-zinc-800" style="background:#0B0C10;">${art.historicalContext}</p>
+      </div>
+    </div>`;
+  openModal('artifactModal');
+};
+
+// ─── COMMUNITY FORM ──────────────────────────────────────────────────
+const csInputs = ['csName','csRegion','csYears','csStory','csSource'];
+function updatePreview() {
+  document.getElementById('pvName').textContent = document.getElementById('csName').value.trim() || 'Warrior Name';
+  document.getElementById('pvRegion').textContent = `${document.getElementById('csRegion').value.trim()||'Region'} · ${document.getElementById('csYears').value.trim()||'Era'}`;
+  document.getElementById('pvStory').textContent = document.getElementById('csStory').value.trim() || 'Their story will appear here...';
+  document.getElementById('pvSource').textContent = `Source: ${document.getElementById('csSource').value.trim() || '—'}`;
+}
+csInputs.forEach(id => { const el = document.getElementById(id); if(el) el.addEventListener('input', updatePreview); });
+
+document.getElementById('csForm').addEventListener('submit', e => {
+  e.preventDefault(); chime();
+  document.getElementById('csSuccess').classList.remove('hidden');
+  e.target.reset(); updatePreview();
+  setTimeout(() => document.getElementById('csSuccess').classList.add('hidden'), 5000);
+});
+
+// ─── 15 AUGUST ───────────────────────────────────────────────────────
+let pledged = false;
+document.getElementById('pledgeBtn').addEventListener('click', () => {
+  if (pledged) return; pledged = true; chime();
+  const btn = document.getElementById('pledgeBtn');
+  const old = parseInt(document.getElementById('pledgeCount').textContent.replace(/,/g,''))||147820;
+  document.getElementById('pledgeCount').textContent = (old+1).toLocaleString('en-IN');
+  btn.textContent = '✓ PLEDGE RECORDED — JAI HIND!';
+  btn.style.background = 'linear-gradient(135deg,#166534,#14532D)'; btn.disabled = true;
+});
+
+document.getElementById('certBtn').addEventListener('click', openCertModal);
+document.getElementById('drawerCertBtn')?.addEventListener('click', openCertModal);
+
+function openCertModal() {
+  const saved = getSaved();
+  const warriors = WARRIORS_DATA.filter(w=>saved.includes(w.id));
+  const names = warriors.length ? warriors.map(w=>w.name).join(', ') : 'Kanaklata Barua, Matangini Hazra, Birsa Munda, Kuyili';
+  const today = new Date().toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
+  document.getElementById('certBox').innerHTML = `
+    <div style="text-align:center;">
+      <div style="width:52px;height:52px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#C05621,#7B241C);border:2px solid #8C6D37;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;color:#fff;font-family:Cinzel,serif;font-weight:bold;font-size:.75rem;">79th</div>
+      <div style="font-family:Cinzel,Georgia,serif;font-size:1.5rem;font-weight:900;letter-spacing:.15em;color:#8C6D37;margin-bottom:.25rem;">CERTIFICATE OF REMEMBRANCE</div>
+      <div style="font-family:monospace;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:#5A5046;margin-bottom:1.5rem;">Unsung Warriors of Swaraj · National Heritage Archive</div>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:#221F1C;font-style:italic;margin-bottom:1rem;">This document certifies that on the solemn occasion of India's Independence Day, the memory and sacrifice of India's forgotten warriors:</p>
+      <div style="padding:.9rem;border:1px solid rgba(140,109,55,.4);border-radius:6px;font-family:Cinzel,serif;font-weight:700;font-size:.9rem;color:#684C12;line-height:1.7;margin-bottom:1rem;">${names}</div>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:.9rem;color:#4A4036;margin-bottom:1.5rem;">...were actively discovered, remembered, and pledged to be carried forward into the memory of a free India.</p>
+      <div style="border-top:1px solid rgba(140,109,55,.3);padding-top:1rem;display:flex;justify-content:space-between;font-family:monospace;font-size:.7rem;color:#5A5046;">
+        <div>DATE: ${today}</div>
+        <div style="text-align:right;"><div style="font-family:Cinzel,serif;font-weight:700;color:#8C6D37;">SWARAJ ARCHIVE</div></div>
+      </div>
+    </div>`;
+  openModal('certModal');
+}
+
+document.getElementById('closeCertBtn').addEventListener('click', () => closeModal('certModal'));
+</script>
+
+</body>
+</html>
